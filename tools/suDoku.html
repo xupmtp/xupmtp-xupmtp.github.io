@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+    <title>Document</title>
+    <style>
+    .layout{
+        width:425px;
+        text-align:center;
+        margin:0px auto;
+        /* background-color:orange; */
+    }
+    .tb{
+        border:1px solid black;
+        border-collapse:collapse;
+        text-align:center;
+        font-size:25px;
+    }
+    td{
+        border:1px solid black;
+        width:45px;
+        height:45px;
+    }
+    td:hover{
+        background-color:rgb(231, 231, 252);
+    }
+    /* tr{
+        border:2px solid black;
+    } */
+    .column{
+        width:15px;
+        border-collapse:collapse;
+    }
+    </style>
+</head>
+<body>
+    <DIV class="layout">
+    <h1>數獨解答器</h1>
+    <table class="tb">
+       <script>
+           //建立table
+           var text="";
+           for(var i=1;i<=9;i++){
+               text+=i%3==0&&i!=9?"<tr style='border-bottom:2px solid black;'>":"<tr>";
+            for(var j=1;j<=9;j++){
+                text+=j%3==0&&j!=9?"<td style='border-right:2px solid black;>' contentEditable='true' id='"+(i-1)+(j-1)+"' onblur='blur(this)'></td>"
+                :"<td contentEditable='true' id='"+(i-1)+(j-1)+"' onblur='blur(this)'></td>";
+            }
+            text+="</tr>";
+           }
+        $(".tb").html(text);
+        // $("td").focus(function() {
+        //     $("#"+this.id).css("background-color","yellow");
+        // })
+        $("td").blur(function() {
+            console.log(this)
+            var regex = /^[0-9]{1}$/;
+            if (!regex.test($("#"+this.id).html()))
+                $("#"+this.id).html("");
+                // $("#"+this.id).css("background-color","white");
+        })
+        // 輸入陣列
+        var S = new Array(9);
+        </script>
+         
+    </table>
+    <br><button id="run" onclick="ck()">計算</button>
+</DIV>
+<script type="text/javascript" src="../js/sudoku.js"></script>
+</body>
+</html>

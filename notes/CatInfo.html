@@ -1,0 +1,1610 @@
+<html>
+               <head>
+                 <base href="file://C:\Users\simon\Desktop\測試github伺服器應用\CatInfo.html/">
+                 <meta charset="UTF-8">
+                 <meta name = "viewport" content = "width = device-width, initial-scale = 1, maximum-scale = 1">
+                 <style id="style">
+@font-face {
+  font-family: 'Lato';
+  src: url('file:///C:/Users/simon/AppData/Local/boost/app-0.15.1/resources/app/resources/fonts/Lato-Regular.woff2') format('woff2'), /* Modern Browsers */
+       url('file:///C:/Users/simon/AppData/Local/boost/app-0.15.1/resources/app/resources/fonts/Lato-Regular.woff') format('woff'), /* Modern Browsers */
+       url('file:///C:/Users/simon/AppData/Local/boost/app-0.15.1/resources/app/resources/fonts/Lato-Regular.ttf') format('truetype');
+  font-style: normal;
+  font-weight: normal;
+  text-rendering: optimizeLegibility;
+}
+@font-face {
+  font-family: 'Lato';
+  src: url('file:///C:/Users/simon/AppData/Local/boost/app-0.15.1/resources/app/resources/fonts/Lato-Black.woff2') format('woff2'), /* Modern Browsers */
+       url('file:///C:/Users/simon/AppData/Local/boost/app-0.15.1/resources/app/resources/fonts/Lato-Black.woff') format('woff'), /* Modern Browsers */
+       url('file:///C:/Users/simon/AppData/Local/boost/app-0.15.1/resources/app/resources/fonts/Lato-Black.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 700;
+  text-rendering: optimizeLegibility;
+}
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Material Icons'),
+       local('MaterialIcons-Regular'),
+       url('file:///C:/Users/simon/AppData/Local/boost/app-0.15.1/resources/app/resources/fonts/MaterialIcons-Regular.woff2') format('woff2'),
+       url('file:///C:/Users/simon/AppData/Local/boost/app-0.15.1/resources/app/resources/fonts/MaterialIcons-Regular.woff') format('woff'),
+       url('file:///C:/Users/simon/AppData/Local/boost/app-0.15.1/resources/app/resources/fonts/MaterialIcons-Regular.ttf') format('truetype');
+}
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-family: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+body {
+  line-height: 1;
+  color: #000;
+  background: #fff;
+}
+ol,
+ul {
+  list-style: none;
+}
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+  vertical-align: middle;
+}
+caption,
+th,
+td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+a img {
+  border: none;
+}
+body {
+  font-size: 16px;
+  padding: 15px;
+  font-family: helvetica, arial, sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+  background-color: #fff;
+}
+body .katex-display > .katex {
+  white-space: nowrap;
+}
+body .katex {
+  white-space: initial;
+}
+body .katex .katex-html {
+  display: -webkit-inline-box;
+  display: -moz-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-box;
+  display: inline-flex;
+}
+body .katex .mfrac>.vlist>span:nth-child(2) {
+  top: 0 !important;
+}
+body .katex-error {
+  background-color: #f2dede;
+  color: #a64444;
+  padding: 5px;
+  margin: -5px;
+  border-radius: 5px;
+}
+body .flowchart-error,
+body .sequence-error .chart-error {
+  background-color: #f2dede;
+  color: #a64444;
+  padding: 5px;
+  border-radius: 5px;
+  -webkit-box-pack: left;
+  -moz-box-pack: left;
+  -o-box-pack: left;
+  -ms-flex-pack: left;
+  -webkit-justify-content: left;
+  justify-content: left;
+}
+li label.taskListItem {
+  margin-left: -1.8em;
+}
+li label.taskListItem.checked {
+  text-decoration: line-through;
+  opacity: 0.5;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+  filter: alpha(opacity=50);
+}
+li.taskListItem.checked {
+  text-decoration: line-through;
+  opacity: 0.5;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+  filter: alpha(opacity=50);
+}
+div.math-rendered {
+  text-align: center;
+}
+.math-failed {
+  background-color: rgba(255,0,0,0.1);
+  color: #d90000;
+  padding: 5px;
+  margin: 5px 0;
+  border-radius: 5px;
+}
+sup {
+  position: relative;
+  top: -0.4em;
+  font-size: 0.8em;
+  vertical-align: top;
+}
+sub {
+  position: relative;
+  bottom: -0.4em;
+  font-size: 0.8em;
+  vertical-align: top;
+}
+a {
+  color: #2bac8f;
+  text-decoration: none;
+  padding: 5px;
+  border-radius: 5px;
+  margin: -5px;
+  -webkit-transition: 0.1s;
+  -moz-transition: 0.1s;
+  -o-transition: 0.1s;
+  -ms-transition: 0.1s;
+  transition: 0.1s;
+}
+a img {
+  vertical-align: sub;
+}
+a:hover {
+  color: #2eb899;
+  text-decoration: underline;
+  background-color: rgba(255,201,92,0.3);
+}
+a:visited {
+  color: #2bac8f;
+}
+hr {
+  border-top: none;
+  border-bottom: solid 1px #d0d0d0;
+  margin: 15px 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 1em 0 1.5em;
+  line-height: 1.4;
+  font-weight: bold;
+  word-wrap: break-word;
+  padding: 0.2em 0 0.2em;
+}
+h1 {
+  font-size: 2.55em;
+  line-height: 1.2;
+  border-bottom: solid 1px #d0d0d0;
+}
+h1:first-child {
+  margin-top: 0;
+}
+h2 {
+  font-size: 1.75em;
+  line-height: 1.225;
+  border-bottom: solid 1px #d0d0d0;
+}
+h2:first-child {
+  margin-top: 0;
+}
+h3 {
+  font-size: 1.5em;
+  line-height: 1.43;
+}
+h4 {
+  font-size: 1.25em;
+  line-height: 1.4;
+}
+h5 {
+  font-size: 1em;
+  line-height: 1.1;
+}
+h6 {
+  font-size: 1em;
+  color: #777;
+}
+p {
+  line-height: 1.6em;
+  margin: 0 0 1em;
+  white-space: pre-line;
+  word-wrap: break-word;
+}
+img {
+  cursor: zoom-in;
+  max-width: 100%;
+}
+strong,
+b {
+  font-weight: bold;
+}
+em,
+i {
+  font-style: italic;
+}
+s,
+del,
+strike {
+  text-decoration: line-through;
+}
+u {
+  text-decoration: underline;
+}
+blockquote {
+  border-left: solid 4px #3fb399;
+  margin: 0 0 1em;
+  padding: 0 25px;
+}
+ul {
+  list-style-type: disc;
+  padding-left: 2em;
+  margin-bottom: 1em;
+}
+ul li {
+  display: list-item;
+}
+ul li.taskListItem {
+  list-style: none;
+}
+ul li.taskListItem>input {
+  margin-left: -1.6em;
+}
+ul li.taskListItem>p {
+  margin-left: -1.8em;
+}
+ul li p {
+  margin: 0;
+}
+ul>li>ul,
+ul>li>ol {
+  margin: 0;
+}
+ul>li>ul {
+  list-style-type: circle;
+}
+ul>li>ul>li>ul {
+  list-style-type: square;
+}
+ol {
+  list-style-type: decimal;
+  padding-left: 2em;
+  margin-bottom: 1em;
+}
+ol li {
+  display: list-item;
+}
+ol li p {
+  margin: 0;
+}
+ol>li>ul,
+ol>li>ol {
+  margin: 0;
+}
+code {
+  padding: 0.2em 0.4em;
+  background-color: #f7f7f7;
+  border-radius: 3px;
+  font-size: 1em;
+  text-decoration: none;
+  margin-right: 2px;
+}
+pre {
+  padding: 0.5rem !important;
+  border: solid 1px #d1d1d1;
+  border-radius: 5px;
+  overflow-x: auto;
+  margin: 0 0 1rem;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  line-height: 1.4em;
+}
+pre code {
+  background-color: inherit;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+}
+pre.CodeMirror {
+  height: initial;
+  -webkit-box-lines: multiple;
+  -moz-box-lines: multiple;
+  -o-box-lines: multiple;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+pre.CodeMirror>code {
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  -o-box-flex: 1;
+  box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  overflow-x: auto;
+}
+pre.mermaid svg {
+  max-width: 100% !important;
+}
+pre>span.filename {
+  margin: -0.5rem 100% 0.5rem -0.5rem;
+  padding: 0.125rem 0.375rem;
+  background-color: #777;
+  color: #fff;
+}
+pre>span.filename:empty {
+  display: none;
+}
+pre>span.lineNumber {
+  display: none;
+  font-size: 1em;
+  padding: 0.5rem 0;
+  margin: -0.5rem 0.5rem -0.5rem -0.5rem;
+  border-right: 1px solid;
+  text-align: right;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+pre>span.lineNumber.CodeMirror-gutters {
+  position: initial;
+  top: initial;
+  left: initial;
+  min-height: 0 !important;
+}
+pre>span.lineNumber>span {
+  display: block;
+  padding: 0 0.5em 0;
+}
+table {
+  display: block;
+  width: 100%;
+  margin: 0 0 1em;
+  overflow-x: auto;
+}
+table thead tr {
+  background-color: #fff;
+}
+table thead th {
+  border-style: solid;
+  padding: 6px 13px;
+  line-height: 1.6;
+  border-width: 1px 0 2px 1px;
+  border-color: #d0d0d0;
+  font-weight: bold;
+}
+table thead th:last-child {
+  border-right: solid 1px #d0d0d0;
+}
+table tbody tr:nth-child(2n + 1) {
+  background-color: #f9f9f9;
+}
+table tbody tr:nth-child(2n) {
+  background-color: #fff;
+}
+table tbody td {
+  border-style: solid;
+  padding: 6px 13px;
+  line-height: 1.6;
+  border-width: 0 0 1px 1px;
+  border-color: #d0d0d0;
+}
+table tbody td:last-child {
+  border-right: solid 1px #d0d0d0;
+}
+kbd {
+  background-color: #fafbfc;
+  border: solid 1px #d0d0d0;
+  border-bottom-color: #888;
+  border-radius: 3px;
+  -webkit-box-shadow: inset 0 -1px 0 #959da5;
+  box-shadow: inset 0 -1px 0 #959da5;
+  display: inline-block;
+  font-size: 0.8em;
+  line-height: 1;
+  padding: 3px 5px;
+}
+.admonition.note,
+.admonition.hint,
+.admonition.danger,
+.admonition.caution,
+.admonition.error,
+.admonition.question,
+.admonition.quote,
+.admonition.abstract,
+.admonition.attention {
+  -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+  position: relative;
+  margin: 1.5625em 0;
+  padding: 0 1.2rem;
+  border-left: 0.4rem solid #448aff;
+  border-radius: 0.2rem;
+  overflow: auto;
+}
+html .admonition>:last-child {
+  margin-bottom: 1.2rem;
+}
+.admonition .admonition {
+  margin: 1em 0;
+}
+.admonition p {
+  margin-top: 0.5em;
+}
+.admonition.note>.admonition-title:before,
+.admonition.hint>.admonition-title:before,
+.admonition.danger>.admonition-title:before,
+.admonition.caution>.admonition-title:before,
+.admonition.error>.admonition-title:before,
+.admonition.question>.admonition-title:before,
+.admonition.quote>.admonition-title:before,
+.admonition.abstract>.admonition-title:before,
+.admonition.attention>.admonition-title:before {
+  position: absolute;
+  left: 1.2rem;
+  font-family: "Material Icons";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+/* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+/* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+/* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+/* Support for IE. */
+  font-feature-settings: 'liga';
+}
+.admonition.note>.admonition-title,
+.admonition.hint>.admonition-title,
+.admonition.danger>.admonition-title,
+.admonition.caution>.admonition-title,
+.admonition.error>.admonition-title,
+.admonition.question>.admonition-title,
+.admonition.quote>.admonition-title,
+.admonition.abstract>.admonition-title,
+.admonition.attention>.admonition-title {
+  margin: 0 -1.2rem;
+  padding: 0.8rem 1.2rem 0.8rem 4rem;
+  border-bottom: 0.1rem solid rgba(68,138,255,0.1);
+  background-color: rgba(68,138,255,0.1);
+  font-weight: 700;
+}
+.admonition>.admonition-title:last-child {
+  margin-bottom: 0;
+}
+.admonition.note {
+  border-left-color: #0288d1;
+}
+.admonition.note>.admonition-title {
+  border-bottom-color: 0.1rem solid rgba(2,136,209,0.2);
+  background-color: rgba(2,136,209,0.2);
+}
+.admonition.note>.admonition-title:before {
+  color: #0288d1;
+  content: "note";
+}
+.admonition.hint {
+  border-left-color: #009688;
+}
+.admonition.hint>.admonition-title {
+  border-bottom-color: 0.1rem solid rgba(0,150,136,0.2);
+  background-color: rgba(0,150,136,0.2);
+}
+.admonition.hint>.admonition-title:before {
+  color: #009688;
+  content: "info_outline";
+}
+.admonition.danger {
+  border-left-color: #c2185b;
+}
+.admonition.danger>.admonition-title {
+  border-bottom-color: 0.1rem solid rgba(194,24,91,0.2);
+  background-color: rgba(194,24,91,0.2);
+}
+.admonition.danger>.admonition-title:before {
+  color: #c2185b;
+  content: "block";
+}
+.admonition.caution {
+  border-left-color: #ffa726;
+}
+.admonition.caution>.admonition-title {
+  border-bottom-color: 0.1rem solid rgba(255,167,38,0.2);
+  background-color: rgba(255,167,38,0.2);
+}
+.admonition.caution>.admonition-title:before {
+  color: #ffa726;
+  content: "warning";
+}
+.admonition.error {
+  border-left-color: #d32f2f;
+}
+.admonition.error>.admonition-title {
+  border-bottom-color: 0.1rem solid rgba(211,47,47,0.2);
+  background-color: rgba(211,47,47,0.2);
+}
+.admonition.error>.admonition-title:before {
+  color: #d32f2f;
+  content: "error_outline";
+}
+.admonition.question {
+  border-left-color: #64dd17;
+}
+.admonition.question>.admonition-title {
+  border-bottom-color: 0.1rem solid rgba(100,221,23,0.2);
+  background-color: rgba(100,221,23,0.2);
+}
+.admonition.question>.admonition-title:before {
+  color: #64dd17;
+  content: "help_outline";
+}
+.admonition.quote {
+  border-left-color: #9e9e9e;
+}
+.admonition.quote>.admonition-title {
+  border-bottom-color: 0.1rem solid rgba(158,158,158,0.2);
+  background-color: rgba(158,158,158,0.2);
+}
+.admonition.quote>.admonition-title:before {
+  color: #9e9e9e;
+  content: "format_quote";
+}
+.admonition.abstract {
+  border-left-color: #00b0ff;
+}
+.admonition.abstract>.admonition-title {
+  border-bottom-color: 0.1rem solid rgba(0,176,255,0.2);
+  background-color: rgba(0,176,255,0.2);
+}
+.admonition.abstract>.admonition-title:before {
+  color: #00b0ff;
+  content: "subject";
+}
+.admonition.attention {
+  border-left-color: #455a64;
+}
+.admonition.attention>.admonition-title {
+  border-bottom-color: 0.1rem solid rgba(69,90,100,0.2);
+  background-color: rgba(69,90,100,0.2);
+}
+.admonition.attention>.admonition-title:before {
+  color: #455a64;
+  content: "priority_high";
+}
+dl {
+  margin: 2rem 0;
+  padding: 0;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  width: 100%;
+  -webkit-box-lines: multiple;
+  -moz-box-lines: multiple;
+  -o-box-lines: multiple;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-align: start;
+  -moz-box-align: start;
+  -o-box-align: start;
+  -ms-flex-align: start;
+  -webkit-align-items: flex-start;
+  align-items: flex-start;
+  border-bottom: 1px solid #d0d0d0;
+  background-color: #fff;
+}
+dt {
+  border-top: 1px solid #d0d0d0;
+  font-weight: bold;
+  text-align: right;
+  overflow: hidden;
+  -webkit-flex-basis: 20%;
+  flex-basis: 20%;
+  padding: 0.4rem 0.9rem;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+dd {
+  border-top: 1px solid #d0d0d0;
+  -webkit-flex-basis: 80%;
+  flex-basis: 80%;
+  padding: 0.4rem 0.9rem;
+  min-height: 2.5rem;
+  background-color: #fff;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+dd + dd {
+  margin-left: 20%;
+}
+pre.fence {
+  -webkit-box-lines: multiple;
+  -moz-box-lines: multiple;
+  -o-box-lines: multiple;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+pre.fence .chart,
+pre.fence .flowchart,
+pre.fence .mermaid,
+pre.fence .sequence {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -o-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  background-color: #fff;
+  max-width: 100%;
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  -o-box-flex: 1;
+  -ms-box-flex: 1;
+  box-flex: 1;
+  -webkit-flex-grow: 1;
+  flex-grow: 1;
+}
+pre.fence .chart canvas,
+pre.fence .flowchart canvas,
+pre.fence .mermaid canvas,
+pre.fence .sequence canvas,
+pre.fence .chart svg,
+pre.fence .flowchart svg,
+pre.fence .mermaid svg,
+pre.fence .sequence svg {
+  max-width: 100% !important;
+}
+pre.fence .chart svg[ratio],
+pre.fence .flowchart svg[ratio],
+pre.fence .mermaid svg[ratio],
+pre.fence .sequence svg[ratio] {
+  width: 100%;
+}
+pre.fence .gallery {
+  width: 100%;
+  height: 50vh;
+}
+pre.fence .gallery .carousel .carousel-main img {
+  min-width: auto;
+  max-width: 100%;
+  min-height: auto;
+  max-height: 100%;
+}
+pre.fence .gallery .carousel .carousel-footer::-webkit-scrollbar-corner {
+  background-color: transparent;
+}
+pre.fence .gallery .carousel .carousel-main,
+pre.fence .gallery .carousel .carousel-footer {
+  background-color: #fff;
+}
+pre.fence .gallery .carousel .prev,
+pre.fence .gallery .carousel .next {
+  color: #333;
+  background-color: rgba(0,0,0,0.3);
+}
+.markdownIt-TOC-wrapper {
+  list-style: none;
+  position: fixed;
+  right: 0;
+  top: 0;
+  margin-left: 15px;
+  z-index: 1000;
+  -webkit-transition: -webkit-transform 0.2s ease-in-out;
+  -moz-transition: -moz-transform 0.2s ease-in-out;
+  -o-transition: -o-transform 0.2s ease-in-out;
+  -ms-transition: -ms-transform 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out;
+  -webkit-transform: translateX(100%);
+  -moz-transform: translateX(100%);
+  -o-transform: translateX(100%);
+  -ms-transform: translateX(100%);
+  transform: translateX(100%);
+}
+.markdownIt-TOC-wrapper .markdownIt-TOC {
+  display: block;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 25px;
+  padding-left: 38px;
+}
+.markdownIt-TOC-wrapper,
+.markdownIt-TOC-wrapper:before {
+  background-color: #2c3033;
+  color: #ddd;
+}
+.markdownIt-TOC-wrapper:hover {
+  -webkit-transform: translateX(-15px);
+  -moz-transform: translateX(-15px);
+  -o-transform: translateX(-15px);
+  -ms-transform: translateX(-15px);
+  transform: translateX(-15px);
+}
+.markdownIt-TOC-wrapper:before {
+  content: 'TOC';
+  position: absolute;
+  width: 60px;
+  height: 30px;
+  top: 60px;
+  left: -29px;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -o-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -o-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-transform-origin: top left;
+  -moz-transform-origin: top left;
+  -o-transform-origin: top left;
+  -ms-transform-origin: top left;
+  transform-origin: top left;
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+}
+body[data-theme="dark"] {
+  color: #f9f9f9;
+  border-color: #444b59;
+  background-color: #2c3033;
+}
+body[data-theme="dark"] a:hover {
+  background-color: rgba(90,214,186,0.2) !important;
+}
+body[data-theme="dark"] code {
+  color: #ea6730;
+  border-color: #3d4450;
+  background-color: #363a3e;
+}
+body[data-theme="dark"] pre {
+  border-color: #474f5c;
+}
+body[data-theme="dark"] pre code {
+  background-color: transparent;
+}
+body[data-theme="dark"] label.taskListItem {
+  background-color: #2c3033;
+}
+body[data-theme="dark"] table thead tr {
+  background-color: #282b2e;
+}
+body[data-theme="dark"] table thead th {
+  border-color: #444b59;
+}
+body[data-theme="dark"] table thead th:last-child {
+  border-right: solid 1px #444b59;
+}
+body[data-theme="dark"] table tbody tr:nth-child(2n + 1) {
+  background-color: #2c3033;
+}
+body[data-theme="dark"] table tbody tr:nth-child(2n) {
+  background-color: #282b2e;
+}
+body[data-theme="dark"] table tbody td {
+  border-color: #444b59;
+}
+body[data-theme="dark"] table tbody td:last-child {
+  border-right: solid 1px #444b59;
+}
+body[data-theme="dark"] kbd {
+  background-color: #444b59;
+  color: #f9f9f9;
+}
+body[data-theme="dark"] dl {
+  border-color: #444b59;
+  background-color: #282b2e;
+}
+body[data-theme="dark"] dt {
+  border-color: #444b59;
+}
+body[data-theme="dark"] dd {
+  border-color: #444b59;
+  background-color: #2c3033;
+}
+body[data-theme="dark"] pre.fence .gallery .carousel-main,
+body[data-theme="dark"] pre.fence .gallery .carousel-footer {
+  background-color: #2c3033;
+}
+body[data-theme="dark"] pre.fence .gallery .prev,
+body[data-theme="dark"] pre.fence .gallery .next {
+  color: #ddd;
+  background-color: #3a404c;
+}
+body[data-theme="dark"] .markdownIt-TOC-wrapper,
+body[data-theme="dark"] .markdownIt-TOC-wrapper:before {
+  background-color: #1c1f25;
+  color: #f9f9f9;
+}
+body[data-theme=solarized-dark] {
+  color: #93a1a1;
+  border-color: #444b59;
+  background-color: #073642;
+}
+body[data-theme=solarized-dark] table thead tr {
+  background-color: #06313b;
+}
+body[data-theme=solarized-dark] table thead th {
+  border-color: #444b59;
+}
+body[data-theme=solarized-dark] table thead th:last-child {
+  border-right: solid 1px #444b59;
+}
+body[data-theme=solarized-dark] table tbody tr:nth-child(2n + 1) {
+  background-color: #073642;
+}
+body[data-theme=solarized-dark] table tbody tr:nth-child(2n) {
+  background-color: #06313b;
+}
+body[data-theme=solarized-dark] table tbody td {
+  border-color: #444b59;
+}
+body[data-theme=solarized-dark] table tbody td:last-child {
+  border-right: solid 1px #444b59;
+}
+body[data-theme=solarized-dark] kbd {
+  background-color: #1e2127;
+  color: #93a1a1;
+}
+body[data-theme=solarized-dark] dl {
+  border-color: #444b59;
+  background-color: #06313b;
+}
+body[data-theme=solarized-dark] dt {
+  border-color: #444b59;
+}
+body[data-theme=solarized-dark] dd {
+  border-color: #444b59;
+  background-color: #073642;
+}
+body[data-theme=solarized-dark] pre.fence .gallery .carousel-main,
+body[data-theme=solarized-dark] pre.fence .gallery .carousel-footer {
+  background-color: #073642;
+}
+body[data-theme=solarized-dark] pre.fence .gallery .prev,
+body[data-theme=solarized-dark] pre.fence .gallery .next {
+  color: #93a1a1;
+  background-color: #002b36;
+}
+body[data-theme=solarized-dark] .markdownIt-TOC-wrapper,
+body[data-theme=solarized-dark] .markdownIt-TOC-wrapper:before {
+  background-color: #062e38;
+  color: #f9f9f9;
+}
+body[data-theme=dracula] {
+  color: #f8f8f2;
+  border-color: #444b59;
+  background-color: #282a36;
+}
+body[data-theme=dracula] table thead tr {
+  background-color: #242631;
+}
+body[data-theme=dracula] table thead th {
+  border-color: #444b59;
+}
+body[data-theme=dracula] table thead th:last-child {
+  border-right: solid 1px #444b59;
+}
+body[data-theme=dracula] table tbody tr:nth-child(2n + 1) {
+  background-color: #282a36;
+}
+body[data-theme=dracula] table tbody tr:nth-child(2n) {
+  background-color: #242631;
+}
+body[data-theme=dracula] table tbody td {
+  border-color: #444b59;
+}
+body[data-theme=dracula] table tbody td:last-child {
+  border-right: solid 1px #444b59;
+}
+body[data-theme=dracula] kbd {
+  background-color: #1e2127;
+  color: #f8f8f2;
+}
+body[data-theme=dracula] dl {
+  border-color: #444b59;
+  background-color: #242631;
+}
+body[data-theme=dracula] dt {
+  border-color: #444b59;
+}
+body[data-theme=dracula] dd {
+  border-color: #444b59;
+  background-color: #282a36;
+}
+body[data-theme=dracula] pre.fence .gallery .carousel-main,
+body[data-theme=dracula] pre.fence .gallery .carousel-footer {
+  background-color: #282a36;
+}
+body[data-theme=dracula] pre.fence .gallery .prev,
+body[data-theme=dracula] pre.fence .gallery .next {
+  color: #f8f8f2;
+  background-color: #44475a;
+}
+body[data-theme=dracula] .markdownIt-TOC-wrapper,
+body[data-theme=dracula] .markdownIt-TOC-wrapper:before {
+  background-color: #22242e;
+  color: #f9f9f9;
+}
+body[data-theme=monokai] {
+  color: #f8f8f2;
+  border-color: #444b59;
+  background-color: #272822;
+}
+body[data-theme=monokai] table thead tr {
+  background-color: #23241f;
+}
+body[data-theme=monokai] table thead th {
+  border-color: #444b59;
+}
+body[data-theme=monokai] table thead th:last-child {
+  border-right: solid 1px #444b59;
+}
+body[data-theme=monokai] table tbody tr:nth-child(2n + 1) {
+  background-color: #272822;
+}
+body[data-theme=monokai] table tbody tr:nth-child(2n) {
+  background-color: #23241f;
+}
+body[data-theme=monokai] table tbody td {
+  border-color: #444b59;
+}
+body[data-theme=monokai] table tbody td:last-child {
+  border-right: solid 1px #444b59;
+}
+body[data-theme=monokai] kbd {
+  background-color: #1e2127;
+  color: #f8f8f2;
+}
+body[data-theme=monokai] dl {
+  border-color: #444b59;
+  background-color: #23241f;
+}
+body[data-theme=monokai] dt {
+  border-color: #444b59;
+}
+body[data-theme=monokai] dd {
+  border-color: #444b59;
+  background-color: #272822;
+}
+body[data-theme=monokai] pre.fence .gallery .carousel-main,
+body[data-theme=monokai] pre.fence .gallery .carousel-footer {
+  background-color: #272822;
+}
+body[data-theme=monokai] pre.fence .gallery .prev,
+body[data-theme=monokai] pre.fence .gallery .next {
+  color: #fff;
+  background-color: #373831;
+}
+body[data-theme=monokai] .markdownIt-TOC-wrapper,
+body[data-theme=monokai] .markdownIt-TOC-wrapper:before {
+  background-color: #21221d;
+  color: #f9f9f9;
+}
+body[data-theme=nord] {
+  color: #d8dee9;
+  border-color: #444b59;
+  background-color: #2e3440;
+}
+body[data-theme=nord] table thead tr {
+  background-color: #292f3a;
+}
+body[data-theme=nord] table thead th {
+  border-color: #444b59;
+}
+body[data-theme=nord] table thead th:last-child {
+  border-right: solid 1px #444b59;
+}
+body[data-theme=nord] table tbody tr:nth-child(2n + 1) {
+  background-color: #2e3440;
+}
+body[data-theme=nord] table tbody tr:nth-child(2n) {
+  background-color: #292f3a;
+}
+body[data-theme=nord] table tbody td {
+  border-color: #444b59;
+}
+body[data-theme=nord] table tbody td:last-child {
+  border-right: solid 1px #444b59;
+}
+body[data-theme=nord] kbd {
+  background-color: #d8dee9;
+  color: #2e3440;
+}
+body[data-theme=nord] dl {
+  border-color: #444b59;
+  background-color: #292f3a;
+}
+body[data-theme=nord] dt {
+  border-color: #444b59;
+}
+body[data-theme=nord] dd {
+  border-color: #444b59;
+  background-color: #2e3440;
+}
+body[data-theme=nord] pre.fence .gallery .carousel-main,
+body[data-theme=nord] pre.fence .gallery .carousel-footer {
+  background-color: #2e3440;
+}
+body[data-theme=nord] pre.fence .gallery .prev,
+body[data-theme=nord] pre.fence .gallery .next {
+  color: #d8dee9;
+  background-color: #434c5e;
+}
+body[data-theme=nord] .markdownIt-TOC-wrapper,
+body[data-theme=nord] .markdownIt-TOC-wrapper:before {
+  background-color: #272c36;
+  color: #f9f9f9;
+}
+body[data-theme=vulcan] {
+  color: #999;
+  border-color: #444b59;
+  background-color: #161719;
+}
+body[data-theme=vulcan] table thead tr {
+  background-color: #141517;
+}
+body[data-theme=vulcan] table thead th {
+  border-color: #444b59;
+}
+body[data-theme=vulcan] table thead th:last-child {
+  border-right: solid 1px #444b59;
+}
+body[data-theme=vulcan] table tbody tr:nth-child(2n + 1) {
+  background-color: #161719;
+}
+body[data-theme=vulcan] table tbody tr:nth-child(2n) {
+  background-color: #141517;
+}
+body[data-theme=vulcan] table tbody td {
+  border-color: #444b59;
+}
+body[data-theme=vulcan] table tbody td:last-child {
+  border-right: solid 1px #444b59;
+}
+body[data-theme=vulcan] kbd {
+  background-color: #ccc;
+  color: #161719;
+}
+body[data-theme=vulcan] dl {
+  border-color: #444b59;
+  background-color: #141517;
+}
+body[data-theme=vulcan] dt {
+  border-color: #444b59;
+}
+body[data-theme=vulcan] dd {
+  border-color: #444b59;
+  background-color: #161719;
+}
+body[data-theme=vulcan] pre.fence .gallery .carousel-main,
+body[data-theme=vulcan] pre.fence .gallery .carousel-footer {
+  background-color: #161719;
+}
+body[data-theme=vulcan] pre.fence .gallery .prev,
+body[data-theme=vulcan] pre.fence .gallery .next {
+  color: #a3a8ae;
+  background-color: #282a2e;
+}
+body[data-theme=vulcan] .markdownIt-TOC-wrapper,
+body[data-theme=vulcan] .markdownIt-TOC-wrapper:before {
+  background-color: #131415;
+  color: #f9f9f9;
+}
+/*# sourceMappingURL=browser/components/markdown.css.map */
+
+body {
+  font-family: 'Segoe UI','meiryo','Microsoft YaHei','helvetica','arial','sans-serif';
+  font-size: 14px;
+
+  
+  
+  
+}
+@media print {
+  body {
+    padding-bottom: initial;
+  }
+}
+code {
+  font-family: 'Consolas','Monaco','Menlo','Ubuntu Mono','Consolas','source-code-pro','monospace';
+  background-color: rgba(0,0,0,0.04);
+  text-align: left;
+  direction: ltr;
+}
+.lineNumber {
+  display: block !important;
+  font-family: 'Consolas','Monaco','Menlo','Ubuntu Mono','Consolas','source-code-pro','monospace';
+}
+
+.clipboardButton {
+  color: rgba(147,147,149,0.8);;
+  fill: rgba(147,147,149,1);;
+  border-radius: 50%;
+  margin: 0px 10px;
+  border: none;
+  background-color: transparent;
+  outline: none;
+  height: 15px;
+  width: 15px;
+  cursor: pointer;
+}
+
+.clipboardButton:hover {
+  transition: 0.2s;
+  color: #939395;
+  fill: #939395;
+  background-color: rgba(0,0,0,0.1);
+}
+
+h1, h2 {
+  border: none;
+}
+
+h3 {
+  margin: 1em 0 0.8em;
+}
+
+h4, h5, h6 {
+  margin: 1.1em 0 0.5em;
+}
+
+h1 {
+  padding: 0.2em 0 0.2em;
+  margin: 1em 0 8px;
+}
+
+h2 {
+  padding: 0.2em 0 0.2em;
+  margin: 1em 0 0.7em;
+}
+
+body p {
+  white-space: normal;
+}
+
+@media print {
+  body[data-theme="default"] {
+    color: #000;
+    background-color: #fff;
+  }
+  .clipboardButton {
+    display: none
+  }
+}
+
+
+</style>
+                 <link rel="stylesheet" href="../css/dracula.css"><link rel="stylesheet" href="../css/katex.min.css"><link rel="stylesheet" href="../css/codemirror.css"><link rel="stylesheet" href="../css/main.min.css">
+               </head>
+               <body><h1 id="%E9%A4%8A%E8%B2%93%E7%AD%86%E8%A8%98" data-line="0">養貓筆記</h1>
+<h3 id="%E4%BA%8B%E5%89%8D%E9%A0%88%E7%9F%A5" data-line="1">事前須知</h3>
+<p data-line="2">養貓前要準備什麼?有什麼注意事項?初步了解可先看影片上的介紹</p>
+<iframe width="600" height="300" src="https://www.youtube.com/embed/NGZb-EEklVw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+<h4 id="%E4%BA%8B%E5%89%8D%E6%BA%96%E5%82%99%E7%AF%87" data-line="5">事前準備篇</h4>
+<ol>
+<li data-line="6">陽台加裝防護欄</li>
+<li data-line="7">高處不擺放易碎物品</li>
+<li data-line="8">家中的危險物品(電線、尖銳物品等)、容易被吞食的小東西、塑膠、化學藥品等等需收好避免誤食。</li>
+<li data-line="9">準備基本食物，貓砂(盆)(確定領養後)</li>
+<li data-line="10">決定它的房間</li>
+<li data-line="11">準備箱子供其躲藏(非必要)</li>
+</ol>
+<h4 id="%E9%A0%98%E9%A4%8A%E7%AF%87" data-line="13">領養篇</h4>
+<p data-line="14">剛領養後要做什麼?有什麼注意事項?以下內容皆參考:<a href="https://stupidlove34.pixnet.net/blog/post/18779990">養貓新手上路</a></p>
+<ol>
+<li data-line="16">先帶去診所請醫生做基本的驗血檢查,及體內外驅蟲。七到十四天觀察無恙後,再去一趟醫院打預防針。(若中途已幫忙處理可跳過)</li>
+<li data-line="17">帶回家後先放在事先準備好的陽台或房間並準備好食物及便盆，不要馬上從外出包抱出來，將它放置在房間中讓牠適應環境，時間久了他會自己慢慢走出來。</li>
+<li data-line="18">貓咪剛換環境的10天內，必須密切的注意貓咪的身體狀況，如果有頻繁的打噴涕、流眼淚流鼻水、不吃不喝、拉肚子軟便、嘔吐或精神不濟的狀況，都需要馬上與獸醫聯絡。</li>
+</ol>
+<ul>
+<li data-line="20">
+<p data-line="20">切記以下幾點是要避免的:</p>
+<ol>
+<li data-line="21">勿主動靠近撫摸</li>
+<li data-line="22">勿製造大聲噪音</li>
+<li data-line="23">勿長時間與貓對上眼</li>
+<li data-line="24">減少大肢體動作</li>
+<li data-line="25">減少從高處看它或從他身上跨越等等動作</li>
+</ol>
+</li>
+<li data-line="27">
+<p data-line="27">你可以嘗試以下幾點來親近它:</p>
+<ol>
+<li data-line="28">餵食是最好的選擇，貓會親近餵它的人。</li>
+<li data-line="29">準備一些玩具，當貓願意出來時試著跟它玩，切記不要勉強拉他出來玩。</li>
+<li data-line="30">每天做在它附近，看書、看電腦等等，讓他熟悉你的味道。</li>
+<li data-line="31">當他願意出來時讓它在家裡逛逛，熟悉環境。</li>
+</ol>
+</li>
+</ul>
+<h4 id="%E6%97%A5%E5%B8%B8%E7%94%9F%E6%B4%BB%E7%AF%87" data-line="33">日常生活篇</h4>
+<h5 id="%E5%9F%BA%E6%9C%AC%E5%84%80%E5%AE%B9" data-line="34">基本儀容</h5>
+<p data-line="35">貓咪一般會進行自我清潔，但有些部分仍是主人要時常注意的<br>
+整理儀容除了能清潔身體外，也能觀察貓咪是否有生病或受傷。<br>
+詳情看<a href="https://catfirst.pixnet.net/blog/post/28145078">貓咪的日常清潔與運動</a></p>
+<h5 id="%E9%81%8B%E5%8B%95" data-line="38">運動</h5>
+<p data-line="39">讓貓咪保持良好精神狀況以及充足的運動機會</p>
+<p data-line="41">例如提供　貓抓板、貓草玩具、或是用逗貓棒和貓咪一起玩樂</p>
+<p data-line="43">可以降低貓咪想玩家俱的機會。</p>
+<h5 id="%E9%A3%9F%E7%89%A9" data-line="44">食物</h5>
+<p data-line="45">常見能吃或不能吃的食物看<a href="https://catfirst.pixnet.net/blog/post/28145089">日常食物篇</a></p>
+<p data-line="47">家中有種植植物時，貓咪可能有誤食的可能<br>
+這篇<a href="https://stupidlove34.pixnet.net/blog/post/18782658">對貓咪和狗狗有毒的植物</a>中列出一般對貓而言有毒的植物</p>
+<h4 id="%E7%94%9F%E6%B4%BB%E7%94%A8%E5%93%81%E9%81%B8%E8%B3%BC%E7%AF%87" data-line="50">生活用品選購篇</h4>
+<p data-line="51">主要日常用品，其他物品可視情況增減，詳情參考<a href="https://www.livewithcat.com/raising-cats-about-supplies/#i">養貓須知-&gt;必備用品新手大全</a></p>
+<h5 id="%E9%A3%9F%E7%89%A9-1" data-line="53">食物</h5>
+<p data-line="54">待補</p>
+<h5 id="%E8%B2%93%E7%A0%82" data-line="55">貓砂</h5>
+<p data-line="56">各種類貓砂比較，目前考慮用松木砂或礦砂，若用松木砂需雙層貓砂盆<br>
+<a href="https://www.quickbuy.com.tw/information/information&amp;information_id=34">【喵知識】市售貓砂種類? 這麼多種該如何挑選?</a></p>
+<p data-line="59">貓砂盆<br>
+待補</p>
+<h5 id="%E5%A4%96%E5%87%BA%E7%B1%A0" data-line="61">外出籠</h5>
+<p data-line="62">待補</p>
+<h5 id="%E5%85%B6%E5%AE%83" data-line="63">其它</h5>
+<ol>
+<li data-line="64">貓窩:附毯子，最好分冬夏天(非必備)</li>
+<li data-line="65">紙箱(貓很愛)</li>
+<li data-line="66">玩具&amp;貓抓板(發洩精力，避免其亂抓家俱)</li>
+</ol>
+<h4 id="%E8%B2%93%E5%92%AA%E7%BF%92%E6%80%A7%E7%AF%87" data-line="68">貓咪習性篇</h4>
+<p data-line="69">貓有什麼壞習慣?<br>
+<a href="https://petbird.tw/article5840.html">貓咪要糾正的20種壞習慣 | | 寵物百科</a></p>
+<p data-line="72">公母貓差異在哪?<br>
+<a href="https://71a.xyz/Z6dXwp">養公貓好還是母貓好？公貓與母貓的徹底比較</a></p>
+<h4 id="%E7%96%BE%E7%97%85%E5%8F%8A%E9%A0%90%E9%98%B2%E7%AF%87" data-line="75">疾病及預防篇</h4>
+<p data-line="76">一般常見疾病，通常由不良飲食習慣所引起<br>
+<a href="https://pet.talk.tw/article.aspx?Article_ID=20">貓咪6大常見疾病的預防治療及徵兆</a></p>
+<p data-line="79">由病毒傳染的疾病，通常藉由注射疫苗來防治<br>
+<a href="https://www.pettalk.tw/blog/%E8%B2%93%E7%88%B8%E5%AA%BD%E4%B8%8D%E5%8F%AF%E4%B8%8D%E7%9F%A5%E3%80%90%E8%B2%93%E5%92%AA%E5%B8%B8%E8%A6%8B%E7%97%85%E6%AF%92%E6%80%A7%E7%96%BE%E7%97%85%E3%80%91%EF%BD%9C%E5%B0%88%E6%A5%AD%E7%8D%B8%E9%86%AB%E2%80%94%E5%90%B3%E5%B1%95%E7%A5%A5">貓爸媽不可不知【貓咪常見病毒性疾病】｜專業獸醫—吳展祥：說寵物</a></p>
+<p data-line="82">要施打何種預防針及施打時的注意事項?<br>
+帶回家後請務必先觀察1-2週，沒有任何疾病症狀，才能為牠注射預防針</p>
+<p data-line="85">以下是施打預防針前後的注意事項:</p>
+<ol>
+<li data-line="87">請先告知醫師貓咪狀況，詢問醫師是否適合施打。</li>
+<li data-line="88">注射後２～３週，才能產生應有的抵抗力。在這段期間內，應妥善照顧，不要洗澡，以免著涼，若有不適應送醫診治。</li>
+<li data-line="89">注射時應注意不要打在脊髓上，以下為常見疫苗種類</li>
+</ol>
+<table data-line="91">
+<thead>
+<tr>
+<th>疫苗名稱</th>
+<th>預防疾病</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>貓三合一疫苗</td>
+<td>貓瘟、貓卡里西病、貓鼻氣管炎。</td>
+</tr>
+<tr>
+<td>貓五合一疫苗</td>
+<td>以上三種及貓白血病、貓披衣菌肺炎。</td>
+</tr>
+<tr>
+<td>狂犬病疫苗</td>
+<td>狂犬病,滿三月齡時,可與貓綜合疫苗同時施打。</td>
+</tr>
+</tbody>
+<tbody></tbody>
+</table>
+<p data-line="97">下面為附近的動物醫院</p>
+<iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d9933.037494644228!2d121.54034141620569!3d25.042066261018807!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1z5YuV54mp6Yar6Zmi!5e0!3m2!1szh-TW!2stw!4v1585064866709!5m2!1szh-TW!2stw" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+<h3 id="%E5%9F%BA%E6%9C%AC%E8%8A%B1%E8%B2%BB" data-line="100">基本花費</h3>
+<h5 id="%E7%A1%AC%E9%AB%94%E9%85%8D%E5%82%99" data-line="101">硬體配備</h5>
+<table data-line="102">
+<thead>
+<tr>
+<th>項目</th>
+<th>花費</th>
+<th>備註</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>食器(碗盆、水盆)</td>
+<td>$100</td>
+<td></td>
+</tr>
+<tr>
+<td>貓砂盆</td>
+<td>$400</td>
+<td></td>
+</tr>
+<tr>
+<td>硬式外出籠</td>
+<td>$600</td>
+<td>＊為了安全性與貓咪舒適度，不建議用軟袋。建議使用上掀的提龍。</td>
+</tr>
+<tr>
+<td>居家門窗防護</td>
+<td>$500</td>
+<td>＊防止貓咪墜樓、走失</td>
+</tr>
+<tr>
+<td>寵物專用沐浴精</td>
+<td>$300</td>
+<td>＊需要專用洗髮精，不能用人類的替代</td>
+</tr>
+<tr>
+<td>食器(碗盆、水盆)</td>
+<td>$100</td>
+<td></td>
+</tr>
+<tr>
+<td>梳子</td>
+<td>$200</td>
+<td>＊換貓季節必備</td>
+</tr>
+<tr>
+<td>指甲剪</td>
+<td>$200</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="3">總和:$2300</td>
+</tr>
+</tbody>
+<tbody></tbody>
+</table>
+<h5 id="%E9%A0%98%E9%A4%8A%E5%89%8D%E9%86%AB%E7%99%82%E8%B2%BB%E7%94%A8%EF%BC%88%E6%AF%8F%E4%B8%80%E5%AE%B6%E8%A8%BA%E6%89%80%E5%83%B9%E9%8C%A2%E5%8F%AF%E8%83%BD%E4%B8%8D%E5%90%8C" data-line="114">領養前醫療費用（每一家診所價錢可能不同)</h5>
+<table data-line="115">
+<thead>
+<tr>
+<th>項目</th>
+<th>花費</th>
+<th>備註</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>基本三合一篩檢</td>
+<td>$1000</td>
+<td>＊貓白血病、貓愛滋病、貓冠狀病毒</td>
+</tr>
+<tr>
+<td>結紮</td>
+<td>$1200</td>
+<td>＊公貓<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1200</mn><mi mathvariant="normal">，</mi><mi mathvariant="normal">母</mi><mi mathvariant="normal">貓</mi></mrow><annotation encoding="application/x-tex">1200，母貓</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">2</span><span class="mord">0</span><span class="mord">0</span><span class="mord cjk_fallback">，</span><span class="mord cjk_fallback">母</span><span class="mord cjk_fallback">貓</span></span></span></span>1700</td>
+</tr>
+<tr>
+<td>體內外驅蟲</td>
+<td>$400</td>
+<td></td>
+</tr>
+<tr>
+<td>晶片</td>
+<td>$500</td>
+<td>＊已絕育<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>500</mn><mi mathvariant="normal">，</mi><mi mathvariant="normal">未</mi><mi mathvariant="normal">絕</mi><mi mathvariant="normal">育</mi></mrow><annotation encoding="application/x-tex">500，未絕育</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">5</span><span class="mord">0</span><span class="mord">0</span><span class="mord cjk_fallback">，</span><span class="mord cjk_fallback">未</span><span class="mord cjk_fallback">絕</span><span class="mord cjk_fallback">育</span></span></span></span>1000</td>
+</tr>
+<tr>
+<td>總和</td>
+<td colspan="2">$2850</td>
+</tr>
+</tbody>
+</table>
+<h5 id="%E6%97%A5%E5%B8%B8%E6%B6%88%E8%80%97%E5%93%81" data-line="122">日常消耗品</h5>
+<table data-line="123">
+<thead>
+<tr>
+<th>項目</th>
+<th>花費</th>
+<th>備註</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>品項</td>
+<td>價錢(新台幣)</td>
+<td>備註</td>
+</tr>
+<tr>
+<td>飼料</td>
+<td>$700/月</td>
+<td>＊一歲成貓所消耗的熱量，中等價位的飼料估計</td>
+</tr>
+<tr>
+<td>貓砂</td>
+<td>$400/月</td>
+<td></td>
+</tr>
+<tr>
+<td>副食罐頭</td>
+<td>$350/月</td>
+<td>＊補充貓咪水分用，一週四罐，以一罐最便宜$20計。</td>
+</tr>
+<tr>
+<td>主食罐</td>
+<td>$60/天</td>
+<td>我們強力建議主食罐，對貓咪腎臟負荷最小。</td>
+</tr>
+<tr>
+<td>除蚤滴劑</td>
+<td>$150/月</td>
+<td>＊品牌種類很多，之後有專欄分析</td>
+</tr>
+<tr>
+<td colspan="3">總和:$1600月</td>
+</tr>
+</tbody>
+</table>
+<h5 id="%E9%86%AB%E7%99%82%E8%B2%BB%E7%94%A8" data-line="132">醫療費用</h5>
+<p data-line="133"><a href="http://www.tpvma.org.tw/update/20161025.pdf">(動物醫院)收費標準參考表 - 台北市獸醫師公會</a></p>
+<h3 id="%E8%AB%96%E5%A3%87%E6%94%B6%E9%A4%8A%E8%B3%87%E8%A8%8A" data-line="135">論壇&amp;收養資訊</h3>
+<p data-line="136">列出幾種收養方式及優缺點來做考量</p>
+<table data-line="137">
+<thead>
+<tr>
+<th>管道</th>
+<th>說明</th>
+<th>優點</th>
+<th>缺點</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>中途之家</td>
+<td>收養者暫時收養待人領養</td>
+<td>1. 能詳細了解貓咪訊息<br>2. 貓咪身體會較為健康</td>
+<td>1. 收養手續通常較為複雜<br>2. 收養條件較為嚴苛<br>3. 能選擇種類較少</td>
+</tr>
+<tr>
+<td>收容所</td>
+<td>通常收容被人棄養、野生捕捉的收容中心</td>
+<td>1 .選擇多，幾乎各種品種皆有<br>2. 收養條件簡單，通常為年滿20歲及少許費用</td>
+<td>1. 無法了解詳細訊息(個性等等)<br>2. 太多動物容易傳染疾病</td>
+</tr>
+</tbody>
+<tbody></tbody>
+</table>
+<h5 id="%E8%AB%96%E5%A3%87" data-line="142">論壇</h5>
+<p data-line="143"><a href="http://www.supervr.net/catbbs/forums/show/2/17.page">貓咪論壇 - 北部地區認養佈告</a></p>
+<p data-line="145"><a href="https://www.ptt.cc/bbs/cat/index.html">看板 cat 文章列表 - 批踢踢實業坊</a></p>
+<h5 id="FB%E7%A4%BE%E5%9C%98" data-line="147">FB社團</h5>
+<p data-line="148"><a href="https://www.facebook.com/groups/408954489141421/">貓咪幼幼班~{ 北部貓咪認養專區 }~ 公開社團 | Facebook</a></p>
+<p data-line="150"><a href="https://www.facebook.com/groups/1612153615732604/">愛貓領養公開社團 | Facebook</a></p>
+<h5 id="%E4%B8%AD%E9%80%94%E9%A4%90%E5%BB%B3" data-line="152">中途餐廳</h5>
+<p data-line="153"><a href="http://www.langlangdontcry.com.tw/store-tp.php">浪浪別哭 pet halfway house &amp; cafe</a></p>
+<p data-line="155"><a href="http://www.taipei-cat-hotel.com/m/412-1699-15368.php">中途送養</a></p>
+<h5 id="%E6%94%B6%E5%AE%B9%E6%89%80" data-line="157">收容所</h5>
+<p data-line="159"><a href="https://asms.coa.gov.tw/Amlapp/App/AnnounceMent.aspx?PageType=Announce">全國動物收容系統</a></p>
+<p data-line="162"><a href="https://www.tcapo.gov.taipei/Content_List.aspx?n=8A474D4AA59E06B7">臺北市動物保護處-動物之家</a><br>
+有些BUG，找不到資料時看它的<a href="https://www.facebook.com/tcapo.tas/">FB專頁</a></p>
+<h5 id="%E5%85%B6%E4%BB%96%E8%AA%8D%E9%A4%8A%E7%B6%B2%E7%AB%99" data-line="165">其他認養網站</h5>
+<p data-line="166"><a href="http://www.meetpets.org.tw/pets/cat">遇見百分百的喵 | 台灣認養地圖</a></p>
+<h3 id="%E9%A0%98%E9%A4%8A%E4%B8%AD%E9%80%94%E5%95%8F%E8%88%87%E7%AD%94" data-line="168">領養中途問與答</h3>
+<h5 id="%E4%BB%96%E5%80%91%E5%95%8F" data-line="169">他們問</h5>
+<ol>
+<li data-line="170">自我詳細介紹(姓名、性別、年紀、職業、居住地、住家環境(透天或是大樓)、聯絡方式…等）</li>
+<li data-line="171">是否有養貓經驗?如果有的話，請詳細告知後來為甚麼沒有養了?</li>
+<li data-line="172">家中人口有哪些？家人是是否同意養貓？他們會不會對寵物過敏？</li>
+<li data-line="173">預備如何照顧貓咪？飼養在房間還是整屋子可以自由活動？是否會讓貓咪獨自外出？</li>
+<li data-line="174">預備給貓咪吃哪一個廠牌的貓乾糧？</li>
+<li data-line="175">預備給貓咪用凝結砂、木屑砂、水晶砂還是其他砂？(我想知道種類)。</li>
+<li data-line="176">有沒有考慮過未來結婚、度假遠遊、畢業、出國、搬家、等將如何「安置」貓咪？</li>
+<li data-line="177">有想過當有一天你懷孕或者有小孩的時候，是否還能繼續照顧牠們嗎？</li>
+<li data-line="178">可否接受負擔貓咪的節育及預防針費用？</li>
+<li data-line="179">若是情侶飼養，是否事前決定貓咪屬於何人？</li>
+</ol>
+<h5 id="%E6%88%91%E5%80%91%E5%95%8F" data-line="180">我們問</h5>
+<ul>
+<li data-line="181">個性安靜或活潑(希望偏安靜)</li>
+<li data-line="182">有無不良習慣(抓家具,咬東西,亂吃食物)</li>
+<li data-line="183">在哪裡收容的?</li>
+<li data-line="184">有無結紮?</li>
+<li data-line="185">是否有驅蚤?</li>
+<li data-line="186">打過何種疫苗?</li>
+<li data-line="187">貓咪哪裡來?</li>
+</ul>
+</body>
+            </html>

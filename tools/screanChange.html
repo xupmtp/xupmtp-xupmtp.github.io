@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://code.jquery.com/jquery-2.2.4.js"
+    integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+    crossorigin="anonymous"></script>  
+    <title>螢幕尺寸轉換</title>
+    <style>
+        .txt{
+            width: 50px;
+        }
+    </style>
+</head>
+<body>
+        <h2>螢幕比例16:9(解析度1920x1080)</h2>
+        <h4>尺寸轉長寬</h4>
+    <div>請輸入螢幕尺寸:<input type="text" id="mm">吋
+    <button id="btn">送出</button>
+    <button id="clear">清空</button>
+    </div><br/>
+    <div class="out" style="margin-left: 15px;">
+        長度:<input type="text" class="txt" id="hh" disabled="disabled" > cm<br/><br>
+        寬度:<input type="text" class="txt" id="ww" disabled="disabled"> cm</div>
+        <h4>長寬轉尺寸</h4>
+    <div style="margin-left: 15px;">
+        請輸入螢幕長度: 長度:<input type="text" class="txt" id="hh"> cm
+        寬度:<input type="text" class="txt" id="ww"> cm
+        <button id="btn1">送出</button>
+        <button id="clear1">清空</button>
+    </div><br/>
+        螢幕尺寸:<input type="text" id="mm"  disabled="disabled">吋
+    </div>
+        <script>
+            $("#btn").click(function(){
+
+        var getmm = $("#mm").val()*2.54;
+        var sethh =getmm/Math.sqrt(9*9+16*16)*16;
+        var setww =getmm/Math.sqrt(9*9+16*16)*9;
+        if(isNaN(sethh)){
+        alert("請輸入數字");
+        $("#mm").val("");
+    }
+        else{
+        $("#hh").val(sethh.toFixed(2));
+        $("#ww").val(setww.toFixed(2));
+            }});
+            $("#clear").click(function(){
+                $("#mm").val("");
+            })
+        
+        </script>
+</body>
+</html>

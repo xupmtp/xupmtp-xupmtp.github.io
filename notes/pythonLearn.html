@@ -1,0 +1,1365 @@
+<html>
+               <head>
+                 <base href="file://C:\Users\simon\Desktop\測試github伺服器應用\pythonLearn.html/">
+                 <meta charset="UTF-8">
+                 <meta name = "viewport" content = "width = device-width, initial-scale = 1, maximum-scale = 1">
+                 <style id="style">
+@font-face {
+  font-family: 'Lato';
+  src: url('file:///C:/Users/simon/AppData/Local/boost/app-0.15.1/resources/app/resources/fonts/Lato-Regular.woff2') format('woff2'), /* Modern Browsers */
+       url('file:///C:/Users/simon/AppData/Local/boost/app-0.15.1/resources/app/resources/fonts/Lato-Regular.woff') format('woff'), /* Modern Browsers */
+       url('file:///C:/Users/simon/AppData/Local/boost/app-0.15.1/resources/app/resources/fonts/Lato-Regular.ttf') format('truetype');
+  font-style: normal;
+  font-weight: normal;
+  text-rendering: optimizeLegibility;
+}
+@font-face {
+  font-family: 'Lato';
+  src: url('file:///C:/Users/simon/AppData/Local/boost/app-0.15.1/resources/app/resources/fonts/Lato-Black.woff2') format('woff2'), /* Modern Browsers */
+       url('file:///C:/Users/simon/AppData/Local/boost/app-0.15.1/resources/app/resources/fonts/Lato-Black.woff') format('woff'), /* Modern Browsers */
+       url('file:///C:/Users/simon/AppData/Local/boost/app-0.15.1/resources/app/resources/fonts/Lato-Black.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 700;
+  text-rendering: optimizeLegibility;
+}
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Material Icons'),
+       local('MaterialIcons-Regular'),
+       url('file:///C:/Users/simon/AppData/Local/boost/app-0.15.1/resources/app/resources/fonts/MaterialIcons-Regular.woff2') format('woff2'),
+       url('file:///C:/Users/simon/AppData/Local/boost/app-0.15.1/resources/app/resources/fonts/MaterialIcons-Regular.woff') format('woff'),
+       url('file:///C:/Users/simon/AppData/Local/boost/app-0.15.1/resources/app/resources/fonts/MaterialIcons-Regular.ttf') format('truetype');
+}
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-family: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+body {
+  line-height: 1;
+  color: #000;
+  background: #fff;
+}
+ol,
+ul {
+  list-style: none;
+}
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+  vertical-align: middle;
+}
+caption,
+th,
+td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+a img {
+  border: none;
+}
+body {
+  font-size: 16px;
+  padding: 15px;
+  font-family: helvetica, arial, sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+  background-color: #fff;
+}
+body .katex-display > .katex {
+  white-space: nowrap;
+}
+body .katex {
+  white-space: initial;
+}
+body .katex .katex-html {
+  display: -webkit-inline-box;
+  display: -moz-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-box;
+  display: inline-flex;
+}
+body .katex .mfrac>.vlist>span:nth-child(2) {
+  top: 0 !important;
+}
+body .katex-error {
+  background-color: #f2dede;
+  color: #a64444;
+  padding: 5px;
+  margin: -5px;
+  border-radius: 5px;
+}
+body .flowchart-error,
+body .sequence-error .chart-error {
+  background-color: #f2dede;
+  color: #a64444;
+  padding: 5px;
+  border-radius: 5px;
+  -webkit-box-pack: left;
+  -moz-box-pack: left;
+  -o-box-pack: left;
+  -ms-flex-pack: left;
+  -webkit-justify-content: left;
+  justify-content: left;
+}
+li label.taskListItem {
+  margin-left: -1.8em;
+}
+li label.taskListItem.checked {
+  text-decoration: line-through;
+  opacity: 0.5;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+  filter: alpha(opacity=50);
+}
+li.taskListItem.checked {
+  text-decoration: line-through;
+  opacity: 0.5;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+  filter: alpha(opacity=50);
+}
+div.math-rendered {
+  text-align: center;
+}
+.math-failed {
+  background-color: rgba(255,0,0,0.1);
+  color: #d90000;
+  padding: 5px;
+  margin: 5px 0;
+  border-radius: 5px;
+}
+sup {
+  position: relative;
+  top: -0.4em;
+  font-size: 0.8em;
+  vertical-align: top;
+}
+sub {
+  position: relative;
+  bottom: -0.4em;
+  font-size: 0.8em;
+  vertical-align: top;
+}
+a {
+  color: #2bac8f;
+  text-decoration: none;
+  padding: 5px;
+  border-radius: 5px;
+  margin: -5px;
+  -webkit-transition: 0.1s;
+  -moz-transition: 0.1s;
+  -o-transition: 0.1s;
+  -ms-transition: 0.1s;
+  transition: 0.1s;
+}
+a img {
+  vertical-align: sub;
+}
+a:hover {
+  color: #2eb899;
+  text-decoration: underline;
+  background-color: rgba(255,201,92,0.3);
+}
+a:visited {
+  color: #2bac8f;
+}
+hr {
+  border-top: none;
+  border-bottom: solid 1px #d0d0d0;
+  margin: 15px 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 1em 0 1.5em;
+  line-height: 1.4;
+  font-weight: bold;
+  word-wrap: break-word;
+  padding: 0.2em 0 0.2em;
+}
+h1 {
+  font-size: 2.55em;
+  line-height: 1.2;
+  border-bottom: solid 1px #d0d0d0;
+}
+h1:first-child {
+  margin-top: 0;
+}
+h2 {
+  font-size: 1.75em;
+  line-height: 1.225;
+  border-bottom: solid 1px #d0d0d0;
+}
+h2:first-child {
+  margin-top: 0;
+}
+h3 {
+  font-size: 1.5em;
+  line-height: 1.43;
+}
+h4 {
+  font-size: 1.25em;
+  line-height: 1.4;
+}
+h5 {
+  font-size: 1em;
+  line-height: 1.1;
+}
+h6 {
+  font-size: 1em;
+  color: #777;
+}
+p {
+  line-height: 1.6em;
+  margin: 0 0 1em;
+  white-space: pre-line;
+  word-wrap: break-word;
+}
+img {
+  cursor: zoom-in;
+  max-width: 100%;
+}
+strong,
+b {
+  font-weight: bold;
+}
+em,
+i {
+  font-style: italic;
+}
+s,
+del,
+strike {
+  text-decoration: line-through;
+}
+u {
+  text-decoration: underline;
+}
+blockquote {
+  border-left: solid 4px #3fb399;
+  margin: 0 0 1em;
+  padding: 0 25px;
+}
+ul {
+  list-style-type: disc;
+  padding-left: 2em;
+  margin-bottom: 1em;
+}
+ul li {
+  display: list-item;
+}
+ul li.taskListItem {
+  list-style: none;
+}
+ul li.taskListItem>input {
+  margin-left: -1.6em;
+}
+ul li.taskListItem>p {
+  margin-left: -1.8em;
+}
+ul li p {
+  margin: 0;
+}
+ul>li>ul,
+ul>li>ol {
+  margin: 0;
+}
+ul>li>ul {
+  list-style-type: circle;
+}
+ul>li>ul>li>ul {
+  list-style-type: square;
+}
+ol {
+  list-style-type: decimal;
+  padding-left: 2em;
+  margin-bottom: 1em;
+}
+ol li {
+  display: list-item;
+}
+ol li p {
+  margin: 0;
+}
+ol>li>ul,
+ol>li>ol {
+  margin: 0;
+}
+code {
+  padding: 0.2em 0.4em;
+  background-color: #f7f7f7;
+  border-radius: 3px;
+  font-size: 1em;
+  text-decoration: none;
+  margin-right: 2px;
+}
+pre {
+  padding: 0.5rem !important;
+  border: solid 1px #d1d1d1;
+  border-radius: 5px;
+  overflow-x: auto;
+  margin: 0 0 1rem;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  line-height: 1.4em;
+}
+pre code {
+  background-color: inherit;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+}
+pre.CodeMirror {
+  height: initial;
+  -webkit-box-lines: multiple;
+  -moz-box-lines: multiple;
+  -o-box-lines: multiple;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+pre.CodeMirror>code {
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  -o-box-flex: 1;
+  box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  overflow-x: auto;
+}
+pre.mermaid svg {
+  max-width: 100% !important;
+}
+pre>span.filename {
+  margin: -0.5rem 100% 0.5rem -0.5rem;
+  padding: 0.125rem 0.375rem;
+  background-color: #777;
+  color: #fff;
+}
+pre>span.filename:empty {
+  display: none;
+}
+pre>span.lineNumber {
+  display: none;
+  font-size: 1em;
+  padding: 0.5rem 0;
+  margin: -0.5rem 0.5rem -0.5rem -0.5rem;
+  border-right: 1px solid;
+  text-align: right;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+pre>span.lineNumber.CodeMirror-gutters {
+  position: initial;
+  top: initial;
+  left: initial;
+  min-height: 0 !important;
+}
+pre>span.lineNumber>span {
+  display: block;
+  padding: 0 0.5em 0;
+}
+table {
+  display: block;
+  width: 100%;
+  margin: 0 0 1em;
+  overflow-x: auto;
+}
+table thead tr {
+  background-color: #fff;
+}
+table thead th {
+  border-style: solid;
+  padding: 6px 13px;
+  line-height: 1.6;
+  border-width: 1px 0 2px 1px;
+  border-color: #d0d0d0;
+  font-weight: bold;
+}
+table thead th:last-child {
+  border-right: solid 1px #d0d0d0;
+}
+table tbody tr:nth-child(2n + 1) {
+  background-color: #f9f9f9;
+}
+table tbody tr:nth-child(2n) {
+  background-color: #fff;
+}
+table tbody td {
+  border-style: solid;
+  padding: 6px 13px;
+  line-height: 1.6;
+  border-width: 0 0 1px 1px;
+  border-color: #d0d0d0;
+}
+table tbody td:last-child {
+  border-right: solid 1px #d0d0d0;
+}
+kbd {
+  background-color: #fafbfc;
+  border: solid 1px #d0d0d0;
+  border-bottom-color: #888;
+  border-radius: 3px;
+  -webkit-box-shadow: inset 0 -1px 0 #959da5;
+  box-shadow: inset 0 -1px 0 #959da5;
+  display: inline-block;
+  font-size: 0.8em;
+  line-height: 1;
+  padding: 3px 5px;
+}
+.admonition.note,
+.admonition.hint,
+.admonition.danger,
+.admonition.caution,
+.admonition.error,
+.admonition.question,
+.admonition.quote,
+.admonition.abstract,
+.admonition.attention {
+  -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+  position: relative;
+  margin: 1.5625em 0;
+  padding: 0 1.2rem;
+  border-left: 0.4rem solid #448aff;
+  border-radius: 0.2rem;
+  overflow: auto;
+}
+html .admonition>:last-child {
+  margin-bottom: 1.2rem;
+}
+.admonition .admonition {
+  margin: 1em 0;
+}
+.admonition p {
+  margin-top: 0.5em;
+}
+.admonition.note>.admonition-title:before,
+.admonition.hint>.admonition-title:before,
+.admonition.danger>.admonition-title:before,
+.admonition.caution>.admonition-title:before,
+.admonition.error>.admonition-title:before,
+.admonition.question>.admonition-title:before,
+.admonition.quote>.admonition-title:before,
+.admonition.abstract>.admonition-title:before,
+.admonition.attention>.admonition-title:before {
+  position: absolute;
+  left: 1.2rem;
+  font-family: "Material Icons";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+/* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+/* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+/* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+/* Support for IE. */
+  font-feature-settings: 'liga';
+}
+.admonition.note>.admonition-title,
+.admonition.hint>.admonition-title,
+.admonition.danger>.admonition-title,
+.admonition.caution>.admonition-title,
+.admonition.error>.admonition-title,
+.admonition.question>.admonition-title,
+.admonition.quote>.admonition-title,
+.admonition.abstract>.admonition-title,
+.admonition.attention>.admonition-title {
+  margin: 0 -1.2rem;
+  padding: 0.8rem 1.2rem 0.8rem 4rem;
+  border-bottom: 0.1rem solid rgba(68,138,255,0.1);
+  background-color: rgba(68,138,255,0.1);
+  font-weight: 700;
+}
+.admonition>.admonition-title:last-child {
+  margin-bottom: 0;
+}
+.admonition.note {
+  border-left-color: #0288d1;
+}
+.admonition.note>.admonition-title {
+  border-bottom-color: 0.1rem solid rgba(2,136,209,0.2);
+  background-color: rgba(2,136,209,0.2);
+}
+.admonition.note>.admonition-title:before {
+  color: #0288d1;
+  content: "note";
+}
+.admonition.hint {
+  border-left-color: #009688;
+}
+.admonition.hint>.admonition-title {
+  border-bottom-color: 0.1rem solid rgba(0,150,136,0.2);
+  background-color: rgba(0,150,136,0.2);
+}
+.admonition.hint>.admonition-title:before {
+  color: #009688;
+  content: "info_outline";
+}
+.admonition.danger {
+  border-left-color: #c2185b;
+}
+.admonition.danger>.admonition-title {
+  border-bottom-color: 0.1rem solid rgba(194,24,91,0.2);
+  background-color: rgba(194,24,91,0.2);
+}
+.admonition.danger>.admonition-title:before {
+  color: #c2185b;
+  content: "block";
+}
+.admonition.caution {
+  border-left-color: #ffa726;
+}
+.admonition.caution>.admonition-title {
+  border-bottom-color: 0.1rem solid rgba(255,167,38,0.2);
+  background-color: rgba(255,167,38,0.2);
+}
+.admonition.caution>.admonition-title:before {
+  color: #ffa726;
+  content: "warning";
+}
+.admonition.error {
+  border-left-color: #d32f2f;
+}
+.admonition.error>.admonition-title {
+  border-bottom-color: 0.1rem solid rgba(211,47,47,0.2);
+  background-color: rgba(211,47,47,0.2);
+}
+.admonition.error>.admonition-title:before {
+  color: #d32f2f;
+  content: "error_outline";
+}
+.admonition.question {
+  border-left-color: #64dd17;
+}
+.admonition.question>.admonition-title {
+  border-bottom-color: 0.1rem solid rgba(100,221,23,0.2);
+  background-color: rgba(100,221,23,0.2);
+}
+.admonition.question>.admonition-title:before {
+  color: #64dd17;
+  content: "help_outline";
+}
+.admonition.quote {
+  border-left-color: #9e9e9e;
+}
+.admonition.quote>.admonition-title {
+  border-bottom-color: 0.1rem solid rgba(158,158,158,0.2);
+  background-color: rgba(158,158,158,0.2);
+}
+.admonition.quote>.admonition-title:before {
+  color: #9e9e9e;
+  content: "format_quote";
+}
+.admonition.abstract {
+  border-left-color: #00b0ff;
+}
+.admonition.abstract>.admonition-title {
+  border-bottom-color: 0.1rem solid rgba(0,176,255,0.2);
+  background-color: rgba(0,176,255,0.2);
+}
+.admonition.abstract>.admonition-title:before {
+  color: #00b0ff;
+  content: "subject";
+}
+.admonition.attention {
+  border-left-color: #455a64;
+}
+.admonition.attention>.admonition-title {
+  border-bottom-color: 0.1rem solid rgba(69,90,100,0.2);
+  background-color: rgba(69,90,100,0.2);
+}
+.admonition.attention>.admonition-title:before {
+  color: #455a64;
+  content: "priority_high";
+}
+dl {
+  margin: 2rem 0;
+  padding: 0;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  width: 100%;
+  -webkit-box-lines: multiple;
+  -moz-box-lines: multiple;
+  -o-box-lines: multiple;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-align: start;
+  -moz-box-align: start;
+  -o-box-align: start;
+  -ms-flex-align: start;
+  -webkit-align-items: flex-start;
+  align-items: flex-start;
+  border-bottom: 1px solid #d0d0d0;
+  background-color: #fff;
+}
+dt {
+  border-top: 1px solid #d0d0d0;
+  font-weight: bold;
+  text-align: right;
+  overflow: hidden;
+  -webkit-flex-basis: 20%;
+  flex-basis: 20%;
+  padding: 0.4rem 0.9rem;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+dd {
+  border-top: 1px solid #d0d0d0;
+  -webkit-flex-basis: 80%;
+  flex-basis: 80%;
+  padding: 0.4rem 0.9rem;
+  min-height: 2.5rem;
+  background-color: #fff;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+dd + dd {
+  margin-left: 20%;
+}
+pre.fence {
+  -webkit-box-lines: multiple;
+  -moz-box-lines: multiple;
+  -o-box-lines: multiple;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+pre.fence .chart,
+pre.fence .flowchart,
+pre.fence .mermaid,
+pre.fence .sequence {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -o-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  background-color: #fff;
+  max-width: 100%;
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  -o-box-flex: 1;
+  -ms-box-flex: 1;
+  box-flex: 1;
+  -webkit-flex-grow: 1;
+  flex-grow: 1;
+}
+pre.fence .chart canvas,
+pre.fence .flowchart canvas,
+pre.fence .mermaid canvas,
+pre.fence .sequence canvas,
+pre.fence .chart svg,
+pre.fence .flowchart svg,
+pre.fence .mermaid svg,
+pre.fence .sequence svg {
+  max-width: 100% !important;
+}
+pre.fence .chart svg[ratio],
+pre.fence .flowchart svg[ratio],
+pre.fence .mermaid svg[ratio],
+pre.fence .sequence svg[ratio] {
+  width: 100%;
+}
+pre.fence .gallery {
+  width: 100%;
+  height: 50vh;
+}
+pre.fence .gallery .carousel .carousel-main img {
+  min-width: auto;
+  max-width: 100%;
+  min-height: auto;
+  max-height: 100%;
+}
+pre.fence .gallery .carousel .carousel-footer::-webkit-scrollbar-corner {
+  background-color: transparent;
+}
+pre.fence .gallery .carousel .carousel-main,
+pre.fence .gallery .carousel .carousel-footer {
+  background-color: #fff;
+}
+pre.fence .gallery .carousel .prev,
+pre.fence .gallery .carousel .next {
+  color: #333;
+  background-color: rgba(0,0,0,0.3);
+}
+.markdownIt-TOC-wrapper {
+  list-style: none;
+  position: fixed;
+  right: 0;
+  top: 0;
+  margin-left: 15px;
+  z-index: 1000;
+  -webkit-transition: -webkit-transform 0.2s ease-in-out;
+  -moz-transition: -moz-transform 0.2s ease-in-out;
+  -o-transition: -o-transform 0.2s ease-in-out;
+  -ms-transition: -ms-transform 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out;
+  -webkit-transform: translateX(100%);
+  -moz-transform: translateX(100%);
+  -o-transform: translateX(100%);
+  -ms-transform: translateX(100%);
+  transform: translateX(100%);
+}
+.markdownIt-TOC-wrapper .markdownIt-TOC {
+  display: block;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 25px;
+  padding-left: 38px;
+}
+.markdownIt-TOC-wrapper,
+.markdownIt-TOC-wrapper:before {
+  background-color: #2c3033;
+  color: #ddd;
+}
+.markdownIt-TOC-wrapper:hover {
+  -webkit-transform: translateX(-15px);
+  -moz-transform: translateX(-15px);
+  -o-transform: translateX(-15px);
+  -ms-transform: translateX(-15px);
+  transform: translateX(-15px);
+}
+.markdownIt-TOC-wrapper:before {
+  content: 'TOC';
+  position: absolute;
+  width: 60px;
+  height: 30px;
+  top: 60px;
+  left: -29px;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -o-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -o-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-transform-origin: top left;
+  -moz-transform-origin: top left;
+  -o-transform-origin: top left;
+  -ms-transform-origin: top left;
+  transform-origin: top left;
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+}
+body[data-theme="dark"] {
+  color: #f9f9f9;
+  border-color: #444b59;
+  background-color: #2c3033;
+}
+body[data-theme="dark"] a:hover {
+  background-color: rgba(90,214,186,0.2) !important;
+}
+body[data-theme="dark"] code {
+  color: #ea6730;
+  border-color: #3d4450;
+  background-color: #363a3e;
+}
+body[data-theme="dark"] pre {
+  border-color: #474f5c;
+}
+body[data-theme="dark"] pre code {
+  background-color: transparent;
+}
+body[data-theme="dark"] label.taskListItem {
+  background-color: #2c3033;
+}
+body[data-theme="dark"] table thead tr {
+  background-color: #282b2e;
+}
+body[data-theme="dark"] table thead th {
+  border-color: #444b59;
+}
+body[data-theme="dark"] table thead th:last-child {
+  border-right: solid 1px #444b59;
+}
+body[data-theme="dark"] table tbody tr:nth-child(2n + 1) {
+  background-color: #2c3033;
+}
+body[data-theme="dark"] table tbody tr:nth-child(2n) {
+  background-color: #282b2e;
+}
+body[data-theme="dark"] table tbody td {
+  border-color: #444b59;
+}
+body[data-theme="dark"] table tbody td:last-child {
+  border-right: solid 1px #444b59;
+}
+body[data-theme="dark"] kbd {
+  background-color: #444b59;
+  color: #f9f9f9;
+}
+body[data-theme="dark"] dl {
+  border-color: #444b59;
+  background-color: #282b2e;
+}
+body[data-theme="dark"] dt {
+  border-color: #444b59;
+}
+body[data-theme="dark"] dd {
+  border-color: #444b59;
+  background-color: #2c3033;
+}
+body[data-theme="dark"] pre.fence .gallery .carousel-main,
+body[data-theme="dark"] pre.fence .gallery .carousel-footer {
+  background-color: #2c3033;
+}
+body[data-theme="dark"] pre.fence .gallery .prev,
+body[data-theme="dark"] pre.fence .gallery .next {
+  color: #ddd;
+  background-color: #3a404c;
+}
+body[data-theme="dark"] .markdownIt-TOC-wrapper,
+body[data-theme="dark"] .markdownIt-TOC-wrapper:before {
+  background-color: #1c1f25;
+  color: #f9f9f9;
+}
+body[data-theme=solarized-dark] {
+  color: #93a1a1;
+  border-color: #444b59;
+  background-color: #073642;
+}
+body[data-theme=solarized-dark] table thead tr {
+  background-color: #06313b;
+}
+body[data-theme=solarized-dark] table thead th {
+  border-color: #444b59;
+}
+body[data-theme=solarized-dark] table thead th:last-child {
+  border-right: solid 1px #444b59;
+}
+body[data-theme=solarized-dark] table tbody tr:nth-child(2n + 1) {
+  background-color: #073642;
+}
+body[data-theme=solarized-dark] table tbody tr:nth-child(2n) {
+  background-color: #06313b;
+}
+body[data-theme=solarized-dark] table tbody td {
+  border-color: #444b59;
+}
+body[data-theme=solarized-dark] table tbody td:last-child {
+  border-right: solid 1px #444b59;
+}
+body[data-theme=solarized-dark] kbd {
+  background-color: #1e2127;
+  color: #93a1a1;
+}
+body[data-theme=solarized-dark] dl {
+  border-color: #444b59;
+  background-color: #06313b;
+}
+body[data-theme=solarized-dark] dt {
+  border-color: #444b59;
+}
+body[data-theme=solarized-dark] dd {
+  border-color: #444b59;
+  background-color: #073642;
+}
+body[data-theme=solarized-dark] pre.fence .gallery .carousel-main,
+body[data-theme=solarized-dark] pre.fence .gallery .carousel-footer {
+  background-color: #073642;
+}
+body[data-theme=solarized-dark] pre.fence .gallery .prev,
+body[data-theme=solarized-dark] pre.fence .gallery .next {
+  color: #93a1a1;
+  background-color: #002b36;
+}
+body[data-theme=solarized-dark] .markdownIt-TOC-wrapper,
+body[data-theme=solarized-dark] .markdownIt-TOC-wrapper:before {
+  background-color: #062e38;
+  color: #f9f9f9;
+}
+body[data-theme=dracula] {
+  color: #f8f8f2;
+  border-color: #444b59;
+  background-color: #282a36;
+}
+body[data-theme=dracula] table thead tr {
+  background-color: #242631;
+}
+body[data-theme=dracula] table thead th {
+  border-color: #444b59;
+}
+body[data-theme=dracula] table thead th:last-child {
+  border-right: solid 1px #444b59;
+}
+body[data-theme=dracula] table tbody tr:nth-child(2n + 1) {
+  background-color: #282a36;
+}
+body[data-theme=dracula] table tbody tr:nth-child(2n) {
+  background-color: #242631;
+}
+body[data-theme=dracula] table tbody td {
+  border-color: #444b59;
+}
+body[data-theme=dracula] table tbody td:last-child {
+  border-right: solid 1px #444b59;
+}
+body[data-theme=dracula] kbd {
+  background-color: #1e2127;
+  color: #f8f8f2;
+}
+body[data-theme=dracula] dl {
+  border-color: #444b59;
+  background-color: #242631;
+}
+body[data-theme=dracula] dt {
+  border-color: #444b59;
+}
+body[data-theme=dracula] dd {
+  border-color: #444b59;
+  background-color: #282a36;
+}
+body[data-theme=dracula] pre.fence .gallery .carousel-main,
+body[data-theme=dracula] pre.fence .gallery .carousel-footer {
+  background-color: #282a36;
+}
+body[data-theme=dracula] pre.fence .gallery .prev,
+body[data-theme=dracula] pre.fence .gallery .next {
+  color: #f8f8f2;
+  background-color: #44475a;
+}
+body[data-theme=dracula] .markdownIt-TOC-wrapper,
+body[data-theme=dracula] .markdownIt-TOC-wrapper:before {
+  background-color: #22242e;
+  color: #f9f9f9;
+}
+body[data-theme=monokai] {
+  color: #f8f8f2;
+  border-color: #444b59;
+  background-color: #272822;
+}
+body[data-theme=monokai] table thead tr {
+  background-color: #23241f;
+}
+body[data-theme=monokai] table thead th {
+  border-color: #444b59;
+}
+body[data-theme=monokai] table thead th:last-child {
+  border-right: solid 1px #444b59;
+}
+body[data-theme=monokai] table tbody tr:nth-child(2n + 1) {
+  background-color: #272822;
+}
+body[data-theme=monokai] table tbody tr:nth-child(2n) {
+  background-color: #23241f;
+}
+body[data-theme=monokai] table tbody td {
+  border-color: #444b59;
+}
+body[data-theme=monokai] table tbody td:last-child {
+  border-right: solid 1px #444b59;
+}
+body[data-theme=monokai] kbd {
+  background-color: #1e2127;
+  color: #f8f8f2;
+}
+body[data-theme=monokai] dl {
+  border-color: #444b59;
+  background-color: #23241f;
+}
+body[data-theme=monokai] dt {
+  border-color: #444b59;
+}
+body[data-theme=monokai] dd {
+  border-color: #444b59;
+  background-color: #272822;
+}
+body[data-theme=monokai] pre.fence .gallery .carousel-main,
+body[data-theme=monokai] pre.fence .gallery .carousel-footer {
+  background-color: #272822;
+}
+body[data-theme=monokai] pre.fence .gallery .prev,
+body[data-theme=monokai] pre.fence .gallery .next {
+  color: #fff;
+  background-color: #373831;
+}
+body[data-theme=monokai] .markdownIt-TOC-wrapper,
+body[data-theme=monokai] .markdownIt-TOC-wrapper:before {
+  background-color: #21221d;
+  color: #f9f9f9;
+}
+body[data-theme=nord] {
+  color: #d8dee9;
+  border-color: #444b59;
+  background-color: #2e3440;
+}
+body[data-theme=nord] table thead tr {
+  background-color: #292f3a;
+}
+body[data-theme=nord] table thead th {
+  border-color: #444b59;
+}
+body[data-theme=nord] table thead th:last-child {
+  border-right: solid 1px #444b59;
+}
+body[data-theme=nord] table tbody tr:nth-child(2n + 1) {
+  background-color: #2e3440;
+}
+body[data-theme=nord] table tbody tr:nth-child(2n) {
+  background-color: #292f3a;
+}
+body[data-theme=nord] table tbody td {
+  border-color: #444b59;
+}
+body[data-theme=nord] table tbody td:last-child {
+  border-right: solid 1px #444b59;
+}
+body[data-theme=nord] kbd {
+  background-color: #d8dee9;
+  color: #2e3440;
+}
+body[data-theme=nord] dl {
+  border-color: #444b59;
+  background-color: #292f3a;
+}
+body[data-theme=nord] dt {
+  border-color: #444b59;
+}
+body[data-theme=nord] dd {
+  border-color: #444b59;
+  background-color: #2e3440;
+}
+body[data-theme=nord] pre.fence .gallery .carousel-main,
+body[data-theme=nord] pre.fence .gallery .carousel-footer {
+  background-color: #2e3440;
+}
+body[data-theme=nord] pre.fence .gallery .prev,
+body[data-theme=nord] pre.fence .gallery .next {
+  color: #d8dee9;
+  background-color: #434c5e;
+}
+body[data-theme=nord] .markdownIt-TOC-wrapper,
+body[data-theme=nord] .markdownIt-TOC-wrapper:before {
+  background-color: #272c36;
+  color: #f9f9f9;
+}
+body[data-theme=vulcan] {
+  color: #999;
+  border-color: #444b59;
+  background-color: #161719;
+}
+body[data-theme=vulcan] table thead tr {
+  background-color: #141517;
+}
+body[data-theme=vulcan] table thead th {
+  border-color: #444b59;
+}
+body[data-theme=vulcan] table thead th:last-child {
+  border-right: solid 1px #444b59;
+}
+body[data-theme=vulcan] table tbody tr:nth-child(2n + 1) {
+  background-color: #161719;
+}
+body[data-theme=vulcan] table tbody tr:nth-child(2n) {
+  background-color: #141517;
+}
+body[data-theme=vulcan] table tbody td {
+  border-color: #444b59;
+}
+body[data-theme=vulcan] table tbody td:last-child {
+  border-right: solid 1px #444b59;
+}
+body[data-theme=vulcan] kbd {
+  background-color: #ccc;
+  color: #161719;
+}
+body[data-theme=vulcan] dl {
+  border-color: #444b59;
+  background-color: #141517;
+}
+body[data-theme=vulcan] dt {
+  border-color: #444b59;
+}
+body[data-theme=vulcan] dd {
+  border-color: #444b59;
+  background-color: #161719;
+}
+body[data-theme=vulcan] pre.fence .gallery .carousel-main,
+body[data-theme=vulcan] pre.fence .gallery .carousel-footer {
+  background-color: #161719;
+}
+body[data-theme=vulcan] pre.fence .gallery .prev,
+body[data-theme=vulcan] pre.fence .gallery .next {
+  color: #a3a8ae;
+  background-color: #282a2e;
+}
+body[data-theme=vulcan] .markdownIt-TOC-wrapper,
+body[data-theme=vulcan] .markdownIt-TOC-wrapper:before {
+  background-color: #131415;
+  color: #f9f9f9;
+}
+/*# sourceMappingURL=browser/components/markdown.css.map */
+
+body {
+  font-family: 'Segoe UI','meiryo','Microsoft YaHei','helvetica','arial','sans-serif';
+  font-size: 14px;
+
+  
+  
+  
+}
+@media print {
+  body {
+    padding-bottom: initial;
+  }
+}
+code {
+  font-family: 'Consolas','Monaco','Menlo','Ubuntu Mono','Consolas','source-code-pro','monospace';
+  background-color: rgba(0,0,0,0.04);
+  text-align: left;
+  direction: ltr;
+}
+.lineNumber {
+  display: block !important;
+  font-family: 'Consolas','Monaco','Menlo','Ubuntu Mono','Consolas','source-code-pro','monospace';
+}
+
+.clipboardButton {
+  color: rgba(147,147,149,0.8);;
+  fill: rgba(147,147,149,1);;
+  border-radius: 50%;
+  margin: 0px 10px;
+  border: none;
+  background-color: transparent;
+  outline: none;
+  height: 15px;
+  width: 15px;
+  cursor: pointer;
+}
+
+.clipboardButton:hover {
+  transition: 0.2s;
+  color: #939395;
+  fill: #939395;
+  background-color: rgba(0,0,0,0.1);
+}
+
+h1, h2 {
+  border: none;
+}
+
+h3 {
+  margin: 1em 0 0.8em;
+}
+
+h4, h5, h6 {
+  margin: 1.1em 0 0.5em;
+}
+
+h1 {
+  padding: 0.2em 0 0.2em;
+  margin: 1em 0 8px;
+}
+
+h2 {
+  padding: 0.2em 0 0.2em;
+  margin: 1em 0 0.7em;
+}
+
+body p {
+  white-space: normal;
+}
+
+@media print {
+  body[data-theme="default"] {
+    color: #000;
+    background-color: #fff;
+  }
+  .clipboardButton {
+    display: none
+  }
+}
+
+
+</style>
+                 <link rel="stylesheet" href="../css/dracula.css"><link rel="stylesheet" href="../css/katex.min.css"><link rel="stylesheet" href="../css/codemirror.css"><link rel="stylesheet" href="../css/main.min.css">
+               </head>
+               <body><h1 id="Learn-Python" data-line="0">Learn Python</h1>
+<hr>
+<p data-line="2">#工具書:類似字典的功能,若做為主要學習工具會較難懂,可搭配影片或書本</p>
+<h3 id="%E5%89%8D%E8%A8%80" data-line="3">前言</h3>
+<ul>
+<li data-line="4">目前python主流的版本為2.7和3.X,學習推薦從高版本的3.X開始,除非遇到非用python2不可的情形,否則未來使用python2的機會只會越來越少.</li>
+<li data-line="5">學習前可以先想想要用python做什麼,學習的目標會較明確,目前python的主要應用有:
+<ol>
+<li data-line="6">AI/機器學習</li>
+<li data-line="7">大數據/資料分析</li>
+<li data-line="8">遊戲設計</li>
+<li data-line="9">網站開發</li>
+<li data-line="10"><a href="https://en.ryte.com/wiki/Crawler#How_does_a_crawler_work.3F">網路爬蟲</a></li>
+<li data-line="11">文字/數學處理</li>
+</ol>
+</li>
+</ul>
+<h3 id="%E5%AE%98%E6%96%B9%E8%B3%87%E6%BA%90" data-line="13">官方資源</h3>
+<h4 id="Pythonorg" data-line="14"><a href="https://www.python.org/">Python.org</a></h4>
+<p data-line="15">#工具書<br>
+python官網,上面也有教學</p>
+<h3 id="%E9%9B%BB%E5%AD%90%E6%9B%B8" data-line="19">電子書</h3>
+<h4 id="Learn-Python-the-Hard-Way" data-line="20"><a href="https://learncodethehardway.org/python/">Learn Python the Hard Way</a></h4>
+<p data-line="21">線上電子書,淺顯易懂</p>
+<h4 id="Automate-the-Boring-Stuff-with-Python" data-line="22"><a href="https://automatetheboringstuff.com/">Automate the Boring Stuff with Python:</a></h4>
+<p data-line="23">線上電子書,上面很多python應用的小程式範例</p>
+<h3 id="%E6%95%99%E5%AD%B8%E7%B6%B2%E7%AB%99" data-line="25">教學網站</h3>
+<h4 id="Codecademy" data-line="26"><a href="https://www.codecademy.com/learn/learn-python">Codecademy</a></h4>
+<ul>
+<li data-line="27">可以線上練習,邊學邊練</li>
+<li data-line="28">外國新手常用的網站之一</li>
+<li data-line="29">python2免費但python3為付費版</li>
+</ul>
+<h4 id="sololearn" data-line="30"><a href="https://www.sololearn.com/Course/Python/">sololearn</a></h4>
+<p data-line="31">很好用的線上網站,上面有各式各樣的語言學習,每個單元結束會有簡單問題幫你複習,雖然內容較為基礎但很扎實,適合新手</p>
+<h4 id="freeCodeCamporg" data-line="32"><a href="https://www.freecodecamp.org/news/">freeCodeCamp.org</a></h4>
+<p data-line="33">#工具書<br>
+上面有各種程式相關的問題教學,可以做為前期解決問題的工具,此網站也有開設Youtube頻道,內有相關學習影片</p>
+<h4 id="Google%E2%80%99s-Python-Class" data-line="36"><a href="https://developers.google.com/edu/python">Google’s Python Class</a></h4>
+<p data-line="37">#工具書<br>
+Google做的python教學網站,內容很詳細</p>
+<h4 id="W3School" data-line="40"><a href="https://www.w3schools.com/Python/default.asp">W3School</a></h4>
+<p data-line="41">#工具書<br>
+知名的大網站,學習和查詢資料都很方便</p>
+<h3 id="%E7%B7%9A%E4%B8%8A%E8%AA%B2%E7%A8%8B" data-line="43">線上課程</h3>
+<h4 id="Online-Python-Course-from-Microsoft" data-line="44"><a href="https://learn.edx.org/topic-python/?g_acctid=926-195-8061&amp;g_campaign=gs-nonbrand-topic-python&amp;g_campaignid=1535528542&amp;g_adgroupid=58645176415&amp;g_adid=405031374941&amp;g_keyword=tutorial%20on%20python%20programming&amp;g_keywordid=kwd-296415772706&amp;g_network=g?utm_source=adwords&amp;utm_campaign=1535528542&amp;utm_medium=58645176415&amp;utm_term=tutorial%20on%20python%20programming&amp;gclid=Cj0KCQiAs67yBRC7ARIsAF49CdXv8ZUu6y6C74E4i78nSYJBHXkumy4z_BRx9a74QGK-p6zrcyUjUbsaAiW7EALw_wcB">Online Python Course from Microsoft</a></h4>
+<p data-line="45">Microsoft推出的教學影片,上面有編輯工具可以做在線練習,edx這個網站上也有很多優質影片可以看看,像CS50</p>
+<h4 id="freeCodeCamp" data-line="46"><a href="https://www.youtube.com/watch?v=rfscVS0vtbw">freeCodeCamp</a></h4>
+<p data-line="47">freecodecamp的Youtube頻道,有許多不錯的影片,這隻python影片講解的也很好懂</p>
+<h4 id="Learn-to-Code-in-Python-3-Udemy" data-line="48"><a href="https://www.udemy.com/course/learn-python-programming-a-step-by-step-course-to-beginners/">Learn to Code in Python 3-Udemy</a></h4>
+<p data-line="49">有名的線上學習網,不過我沒實際用過,大多要付費但免費的資源也很多,有興趣也可以搜尋其他python相關課程聽聽看</p>
+<h4 id="educative" data-line="50"><a href="https://www.educative.io/courses/learn-python-from-scratch?affiliate_id=5082902844932096&amp;utm_source=google&amp;utm_medium=cpc&amp;utm_campaign=python-from-scratch&amp;gclid=CjwKCAiA1rPyBRAREiwA1UIy8O6hRUMxEosQQCWd7Z5mkDTjGhO6GNndOoAYgpgvhuDEeE2ojSXKShoCtGEQAvD_BwE">educative</a></h4>
+<p data-line="51">可以線上編輯的學習網,大部分課程為付費內容不知為何python課程是免費的</p>
+<h4 id="DataCamp" data-line="52"><a href="https://www.datacamp.com/">DataCamp</a></h4>
+<p data-line="53">聽評價還不錯,全英文且無字幕,後期須付費但可重新辦帳號來繼續免費使用</p>
+<h3 id="%E5%88%B7%E9%A1%8C%E7%B6%B2%E7%AB%99" data-line="54">刷題網站</h3>
+<p data-line="55">刷題的主要目的是為了面是做準備,上面有許多企業在面試時會出的考古題,不過新手也可以上去練習看看,可以更加熟悉語法</p>
+<h4 id="LeetCode" data-line="56"><a href="https://leetcode.com/">LeetCode</a></h4>
+<p data-line="57">最有名的刷題網,題目齊全且支援的程式語言也很多種,題目有分類型和難易度可依自身需求做調整,老手新手都很實用</p>
+<h4 id="Codewars" data-line="58"><a href="https://www.codewars.com/">Codewars</a></h4>
+<p data-line="59">上面題目多為使用者自創,網站結合遊戲性讓寫題目更有趣,有許多有趣的題目</p>
+<h3 id="%E9%96%8B%E7%99%BC%E5%B7%A5%E5%85%B7" data-line="60">開發工具</h3>
+<p data-line="61">有些教學網站可以線上練習,但最好還是下載一個離線的工具可以隨時使用,推薦順序從上到下</p>
+<h4 id="PyCharm" data-line="62"><a href="https://www.jetbrains.com/pycharm/">PyCharm</a></h4>
+<p data-line="63">首推!功能很齊全我以前也用這個,有分免費版和付費版,學習上使用免費版就很足夠了</p>
+<h4 id="Jupyter" data-line="64"><a href="https://jupyter.org/">Jupyter</a></h4>
+<p data-line="65">功能強大的開發工具,許多知名企業與大學都使用Jupyter做開發與教學</p>
+<h4 id="Spyder" data-line="66"><a href="https://www.spyder-ide.org/">Spyder</a></h4>
+<p data-line="67">輕量的工具,提供方便查看執行結果的畫面而且它是完全免費的工具</p>
+<h4 id="Sublime-Text3" data-line="68"><a href="https://www.sublimetext.com/3">Sublime Text3</a></h4>
+<p data-line="69">很輕量的工具,打開跟執行都很快</p>
+<h4 id="Visual-Studio-Code" data-line="70"><a href="https://code.visualstudio.com/">Visual Studio Code</a></h4>
+<p data-line="71">微軟開發的編輯工具,如果要同時寫Html,javaScript等等程式它是首選,單純學習python它也是很好用的工具</p>
+<h4 id="Notepad" data-line="72"><a href="https://notepad-plus-plus.org/downloads/v7.8.4/">Notepad++</a></h4>
+<p data-line="73">最多人用的編輯軟體,基本上什麼程式都可以編輯,不過其主要功能為編輯而非開發所以學習的話不推薦使用</p>
+</body>
+            </html>
