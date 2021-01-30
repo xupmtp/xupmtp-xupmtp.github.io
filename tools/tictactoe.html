@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <!-- 加入Babel解析JSX語法 -->
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous">
+    </script>
+
+    <style>
+        table,
+        th,
+        td {
+            border: 1.5px solid black;
+            text-align: center;
+        }
+
+        table {
+            border-collapse: collapse;
+            /* 置中 */
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        th,
+        td {
+            padding: 7px;
+        }
+
+        .cycle {
+            border-radius: 50%;
+            width: 47px;
+            height: 47px;
+            background-color: white;
+        }
+
+        .red {
+            background-color: red;
+        }
+
+        .black {
+            background-color: black;
+        }
+
+        .main {
+            text-align: center;
+        }
+
+        .modalBtn {
+            margin-top: 30px;
+        }
+
+        /* table tr:nth-last-child(1) td:nth-child(1) div {
+            background-color: red;
+        } */
+    </style>
+</head>
+
+<body>
+    <div id="main" class="main"></div>
+    <script type="text/babel">
+        const TEXT = {
+        colorPink: 'mistyrose',
+        colorGray: '#DDDDDD',
+        colorWhite: 'white',
+    }
+
+    class App extends React.Component {
+        constructor(props) {
+            super(props)
+            let table = []
+            for (let i = 0;i < 7;i++){
+                let arr = [];
+                for (let j = 0;j < 7;j++){
+                    arr.push(0)
+                }
+                table.push(arr)
+            }
+
+            this.state = {
+                // 勝利者
+                winner: null,
+                // 輪到誰
+                isRed: true,
+                // 棋盤 0:空白 1:紅方 2:黑方
+                table: table,
+                // 當前落子位置
+                location: {
+                    x: -1,
+                    y: -1
+                }
+            }
+        }
+
+        // 檢查獲勝並顯示勝利畫面
+        componentDidUpdate(prevProps, prevState, snapshot) {
+            /** 若沒return會造成無限循環 
+             * setState => componentDidUpdate => setState => componentDidUpdate ...
+             * https://stackoverflow.com/questions/30528348/setstate-inside-of-componentdidupdate
+            */
+            if (this.state.winner !== null) {
+                let myModal = new bootstrap.Modal(document.querySelector('#staticBackdrop'), {
+                        'backdrop': 'static'
+                    })
+                myModal.show()
+                return
+            }
+            // 檢查勝利 回傳勝利方
+            const res = this.checkWinner()
+            let winner = ''
+            if (res === 1)
+                winner = '紅方獲勝'
+            else if (res === 2)
+                winner = '黑方獲勝'
+            else
+                return
+            // 若有勝利方則設置勝利玩家
+            this.setState({
+                winner: winner
+            })
+        }
+
+        render() {
+            const table = this.state.table.map((arr, i) => {
+                return (
+                    <tr key={i}>
+                    {arr.map((val, j) => {
+                        return (
+                            <td data-index={j} 
+                                key={j}
+                                onMouseEnter={this.mouseHover}
+                                onMouseLeave={this.mouseLeave}
+                                onClick={this.putChess}>
+                                <div className={this.checkChess(this.state.table[i][j])}></div>
+                            </td>
+                        )
+                    })}
+                    </tr>
+                )
+            })
+            return (
+                <div>
+                    <h2>四連棋遊戲</h2>
+                    <h4>{`輪到${this.state.isRed ? '紅方' : '黑方'}`}</h4>
+                    <table>
+                        <tbody>
+                            {table}
+                        </tbody>
+                    </table>
+                    <div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div className="modal-dialog">
+                            <div className="modal-content">
+                                <div className="modal-body">
+                                    <h2>{this.state.winner}</h2>
+                                    <button onClick={this.resetGame} type="button" className="modalBtn btn btn-primary" data-bs-dismiss="modal">確認</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )
+        }
+
+        mouseHover = (event) => this.mouseEvent(event, this.state.isRed ? TEXT.colorPink : TEXT.colorGray)
+
+        mouseLeave = (event) => this.mouseEvent(event, TEXT.colorWhite)
+
+        /**
+         *  https://www.itread01.com/content/1545071047.html
+         *  event.target可能取得div元素,index為undefined
+         */
+        mouseEvent = (event, color, index) => {
+            const tds = document.querySelectorAll(`table td:nth-child(${event == null ? index : (parseInt(event.currentTarget.dataset.index) + 1)})`)
+            tds.forEach((ele) => ele.style.backgroundColor = color)
+        }
+
+        // 更改棋子顏色
+        checkChess = (chess) => {
+            switch(chess){
+                case 0:
+                    return 'cycle'
+                case 1:
+                    return 'cycle red'
+                case 2:
+                    return 'cycle black'
+                default:
+                    return 'cycle' 
+            }
+        }
+
+        // 落子
+        putChess = (event) => {
+            const columnIndex = parseInt(event.currentTarget.dataset.index)
+            this.setState(state => {
+                const table = [...state.table]
+                let changePlayer = !state.isRed
+                let location = {
+                    x: columnIndex,
+                    y: -1
+                }
+                for (let i = table.length - 1; i >= 0; i--) {
+                    if (table[i][columnIndex] === 0){
+                        table[i][columnIndex] = this.state.isRed ? 1 : 2
+                        // 有落子 檢查勝利
+                        location.y = i
+                        break
+                    }
+                    if (i == 0 && table[i][columnIndex] !== 0){
+                        changePlayer = state.isRed
+                    }
+                }
+                this.mouseEvent(null, changePlayer ?  TEXT.colorPink : TEXT.colorGray, columnIndex + 1)
+                return {
+                    table: table,
+                    isRed: changePlayer,
+                    location: location
+                }
+            })
+        }
+
+        // 檢查勝利者
+        checkWinner = () => {
+            const x = this.state.location.x
+            const y = this.state.location.y
+            if (y === -1)
+                return 0
+            const table = this.state.table
+            let count = table[y][0] === table[y][x] ? 1 : 0
+
+            // 檢查十字
+            for(let i = 1; i < table.length; i++){
+                if (table[y][i] === table[y][x] && table[y][i] === table[y][i - 1])
+                    count++
+                else if (table[y][i] === table[y][x])
+                    count = 1
+                else
+                    count = 0
+                if (count >= 4)
+                    return this.state.table[y][x]
+            }
+            for(let i = 1; i < table.length; i++){
+                if (table[i][x] === table[y][x] && table[i][x] === table[i - 1][x])
+                    count++
+                else if (table[i][x] === table[y][x])
+                    count = 1
+                else
+                    count = 0
+                if (count >= 4)
+                    return this.state.table[y][x]    
+            }
+            count = 1
+            let n = 1
+            // 檢查X型
+            while (y + n < table.length && x + n < table[y].length && table[y + n][x + n] === table[y][x]){
+                count++
+                n++
+            }
+            n = 1
+            while(y - n > 0 && x - n > 0 && table[y - n][x - n] === table[y][x]) {
+                count++
+                n++
+            }
+            if (count >= 4)
+                    return this.state.table[y][x]
+            
+
+            while (y - n > 0 && x + n < table[y].length && table[y - n][x + n] === table[y][x]){
+                count++
+                n++
+            }
+            n = 1
+            while(y + n < table.length && x - n > 0 && table[y + n][x - n] === table[y][x]) {
+                count++
+                n++
+            }
+            if (count >= 4)
+                    return this.state.table[y][x]
+            return 0
+        }
+
+        // TODO 檢查方式錯誤 未值線也會勝利
+        searchCount = (i, j, count) => {
+            const table = this.state.table
+        }
+
+        resetGame = () => {
+            ReactDOM.unmountComponentAtNode(document.querySelector("#main"))
+            ReactDOM.render(<App />, document.querySelector("#main"))
+        }
+    }
+    ReactDOM.render(<App />, document.querySelector("#main"))
+    </script>
+</body>
+
+</html>
