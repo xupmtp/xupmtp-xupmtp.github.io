@@ -63,25 +63,7 @@ Spring框架相關電子書
 ### notes
 筆記類項目
 #### [CatInfo](https://xupmtp.github.io/notes/CatInfo)
-養貓筆記,記錄養貓新手可能會遇到的各種狀況及需要的物品和花費
-* 事前須知
-影片,初步了解養貓需要什麼
-* 領養篇
-剛領養時需要注意哪些事情
-* 日常生活篇
-日常中會遇到的狀況及注意事項
-* 生活用品選購篇
-貓咪需要的最低物資
-* 貓咪習性篇
-貓咪的各種習性
-* 疾病及預防篇
-疾病的預防及動物醫院位置
-* 基本花費
-統計一個月的基本開銷
-* 論壇&收養資訊
-認養相關交流社團
-* 領養中途問與答
-若要認養中途貓咪,雙方會需要了解的問題有哪些
+養貓筆記,記錄養貓須知
 #### [pythonLearn](https://xupmtp.github.io/notes/pythonLearn)
 整理python學習資源,包括:
 * python下載網址
@@ -101,5 +83,7 @@ Spring框架相關電子書
 隨機產生一寵物名稱,檔案來源為data中的json檔,此html是由notion筆記軟體所產生
 #### [尺寸轉換](https://xupmtp.github.io/tools/screanChange)
 將電視,筆電等螢幕吋數轉長寬或是反之轉吋
+#### [四子棋遊戲](https://xupmtp.github.io/tools/tictactoe.html)
+四子棋小遊戲，使用React + bootstrap建立
 ### 根目錄
 目前放些雜項內容主要為html檔,未來有機會再整理
