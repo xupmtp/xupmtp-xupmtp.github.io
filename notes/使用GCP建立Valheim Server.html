@@ -1421,65 +1421,66 @@ body p {
 <li data-line="50">過程中有需要輸入y/n的都打y</li>
 <li data-line="51">最後要重啟VM。關閉Command Line視窗，回到VM執行個體 -&gt; 勾選建立的VM -&gt; 點選上方停止按鈕 -&gt; 點選 開始/繼續</li>
 <li data-line="52">完成後便可開啟遊戲測試連線,在vm執行個體會看到外部IP，這是在遊戲中輸入<strong>Join IP</strong>時所用到的IP位置，密碼則是步驟11設定的伺服器密碼</li>
+<li data-line="53">成功後便可開始遊戲，如果之前玩到一半要遷移舊資料到VM的看<a href="#搬移地圖檔案">搬移地圖檔案</a></li>
 </ol>
-<h5 id="%E4%BC%BA%E6%9C%8D%E5%99%A8%E6%9B%B4%E6%96%B0" data-line="54">伺服器更新</h5>
-<p data-line="55">當官方有任何更新時必須手動重啟伺服器，更新內容才會同步到遊戲中，停止後須等待約1分鐘再啟動</p>
+<h5 id="%E4%BC%BA%E6%9C%8D%E5%99%A8%E6%9B%B4%E6%96%B0" data-line="55">伺服器更新</h5>
+<p data-line="56">當官方有任何更新時必須手動重啟伺服器，更新內容才會同步到遊戲中，停止後須等待約1分鐘再啟動</p>
 <ol>
-<li data-line="56">停止伺服器：<code>sudo systemctl stop valheimserver.service</code></li>
-<li data-line="57">啟動伺服器：<code>sudo systemctl start valheimserver.service</code></li>
+<li data-line="57">停止伺服器：<code>sudo systemctl stop valheimserver.service</code></li>
+<li data-line="58">啟動伺服器：<code>sudo systemctl start valheimserver.service</code></li>
 </ol>
-<p data-line="59">或是到上面步驟6的選單中輸入代號重啟14</p>
-<blockquote data-line="60">
-<p data-line="60">若重啟後有任何問題可以停止伺服器 -&gt; 重啟VM -&gt; 啟動伺服器</p>
+<p data-line="60">或是到上面步驟6的選單中輸入代號重啟14</p>
+<blockquote data-line="61">
+<p data-line="61">若重啟後有任何問題可以停止伺服器 -&gt; 重啟VM -&gt; 啟動伺服器</p>
 </blockquote>
-<h3 id="%E6%90%AC%E7%A7%BB%E5%9C%B0%E5%9C%96%E6%AA%94%E6%A1%88" data-line="62">搬移地圖檔案</h3>
+<h3 id="%E6%90%AC%E7%A7%BB%E5%9C%B0%E5%9C%96%E6%AA%94%E6%A1%88" data-line="63">搬移地圖檔案</h3>
 <ul>
-<li data-line="63">要搬移Valheim地圖資料須將<code>worlds/</code>資料夾下所有檔案搬移過去,不同主機存放目錄不相同<br />
+<li data-line="64">要搬移Valheim地圖資料須將<code>worlds/</code>資料夾下所有檔案搬移過去,不同主機存放目錄不相同<br />
 Windows<br />
 <code>C:\Users\USERNAME\AppData\LocalLow\IronGate\Valheim\worlds\</code><br />
 Linux<br />
 <code>/home/steam/.config/unity3d/IronGate/Valheim/worlds/</code></li>
-<li data-line="68">我們須透過SFTP將資料上傳至VM中</li>
+<li data-line="69">我們須透過SFTP將資料上傳至VM中</li>
 </ul>
-<h5 id="%E5%8F%96%E5%BE%97%E5%85%AC%E7%A7%81%E9%91%B0" data-line="69">取得公私鑰</h5>
-<p data-line="70">要連線至VM中最快的方式是使用金鑰的方式</p>
+<h5 id="%E5%8F%96%E5%BE%97%E5%85%AC%E7%A7%81%E9%91%B0" data-line="70">取得公私鑰</h5>
+<p data-line="71">要連線至VM中最快的方式是使用金鑰的方式</p>
 <ol>
-<li data-line="71">首先下載<a href="https://www.puttygen.com/download.php?val=49">PuTTYgen</a>並執行</li>
-<li data-line="72">勾選下面幾項後按<strong>Generate</strong><br />
+<li data-line="72">首先下載<a href="https://www.puttygen.com/download.php?val=49">PuTTYgen</a>並執行</li>
+<li data-line="73">勾選下面幾項後按<strong>Generate</strong><br />
 <img src="https://xupmtp.github.io/img/gcp6.jpg" width="400px" /></li>
-<li data-line="74">修改Key comment為建立VM的mail名稱(例如我的mail是example@gamil.com則輸入example)</li>
-<li data-line="75">複製圖中紅框部分之後會用到，然後按Save private key(有任何彈窗都按確認)<br />
+<li data-line="75">修改Key comment為建立VM的mail名稱(例如我的mail是example@gamil.com則輸入example)</li>
+<li data-line="76">複製圖中紅框部分之後會用到，然後按Save private key(有任何彈窗都按確認)<br />
 <img src="https://xupmtp.github.io/img/gcp7.jpg" width="400px" /></li>
-<li data-line="77">回到GCP -&gt; 點選左邊工具列 -&gt; Compute Engine -&gt; 中繼資料 -&gt; 安全殼層金鑰</li>
-<li data-line="78">點選編輯 -&gt; 新增項目 -&gt; 將複製內容貼到這裡 -&gt; 儲存</li>
-<li data-line="79">到這裡便完成公私鑰的設定了</li>
+<li data-line="78">回到GCP -&gt; 點選左邊工具列 -&gt; Compute Engine -&gt; 中繼資料 -&gt; 安全殼層金鑰</li>
+<li data-line="79">點選編輯 -&gt; 新增項目 -&gt; 將複製內容貼到這裡 -&gt; 儲存</li>
+<li data-line="80">到這裡便完成公私鑰的設定了</li>
 </ol>
-<h5 id="%E4%B8%8A%E5%82%B3%E5%9C%B0%E5%9C%96%E6%AA%94" data-line="81">上傳地圖檔</h5>
+<h5 id="%E4%B8%8A%E5%82%B3%E5%9C%B0%E5%9C%96%E6%AA%94" data-line="82">上傳地圖檔</h5>
 <ol>
-<li data-line="82">首先下載<a href="https://filezilla-project.org/">FileZilla</a></li>
-<li data-line="83">開啟後 檔案 -&gt; 站台管理員 -&gt; 新增站台(名稱自訂)</li>
-<li data-line="84">按下圖輸入欄位，藍框部分須和圖中相同，紅框填入自己的
+<li data-line="83">首先下載<a href="https://filezilla-project.org/">FileZilla</a></li>
+<li data-line="84">開啟後 檔案 -&gt; 站台管理員 -&gt; 新增站台(名稱自訂)</li>
+<li data-line="85">按下圖輸入欄位，藍框部分須和圖中相同，紅框填入自己的
 <ul>
-<li data-line="85">主機填入VM的對外IP</li>
-<li data-line="86">使用者和Key comment的值相同</li>
-<li data-line="87">金鑰檔案是之前儲存的private key檔案位置<br />
+<li data-line="86">主機填入VM的對外IP</li>
+<li data-line="87">使用者和Key comment的值相同</li>
+<li data-line="88">金鑰檔案是之前儲存的private key檔案位置<br />
 <img src="https://xupmtp.github.io/img/gcp8.jpg" width="500px" /></li>
 </ul>
 </li>
-<li data-line="89">點選連線，若連線成功代表設定正確，若上面有任一步驟錯誤皆可能讓連線失敗</li>
-<li data-line="90">將<code>worlds/</code>資料夾下所有檔案先拖移到<code>/home/USERNAME/</code>底下</li>
-<li data-line="91">開啟VM command line</li>
-<li data-line="92">停止伺服器：<code>sudo systemctl stop valheimserver.service</code></li>
-<li data-line="93">cd到USERNMAE目錄(EX:<code>cd /home/example</code>)</li>
-<li data-line="94">搬移所有檔案到worlds目錄 : <code>sudo mv * /home/steam/.config/unity3d/IronGate/Valheim/worlds/</code></li>
-<li data-line="95">按<a href="#伺服器更新">伺服器更新</a>步驟重啟伺服器</li>
-<li data-line="96">開啟遊戲確認地圖是否已更新</li>
+<li data-line="90">點選連線，若連線成功代表設定正確，若上面有任一步驟錯誤皆可能讓連線失敗</li>
+<li data-line="91">將<code>worlds/</code>資料夾下所有檔案先拖移到<code>/home/USERNAME/</code>底下</li>
+<li data-line="92">開啟VM command line</li>
+<li data-line="93">停止伺服器：<code>sudo systemctl stop valheimserver.service</code></li>
+<li data-line="94">cd到USERNMAE目錄(EX:<code>cd /home/example</code>)</li>
+<li data-line="95">搬移所有檔案到worlds目錄 : <code>sudo mv * /home/steam/.config/unity3d/IronGate/Valheim/worlds/</code></li>
+<li data-line="96">按<a href="#伺服器更新">伺服器更新</a>步驟重啟伺服器</li>
+<li data-line="97">開啟遊戲確認地圖是否已更新</li>
 </ol>
-<h3 id="%E5%8F%83%E8%80%83" data-line="98">參考</h3>
+<h3 id="%E5%8F%83%E8%80%83" data-line="99">參考</h3>
 <ul>
-<li data-line="99"><a href="https://www.youtube.com/watch?v=2WjFBp1Opr4">如何架設瓦爾海姆GCP獨立伺服器</a></li>
-<li data-line="100"><a href="https://github.com/Nimdy/Dedicated_Valheim_Server_Script">GitHub - Nimdy/Dedicated_Valheim_Server_Script</a></li>
-<li data-line="101"><a href="https://medium.com/@milly16chien/gcp-upload-file-via-sftp-d57e28c3db57">[GCP] Upload file via SFTP</a></li>
+<li data-line="100"><a href="https://www.youtube.com/watch?v=2WjFBp1Opr4">如何架設瓦爾海姆GCP獨立伺服器</a></li>
+<li data-line="101"><a href="https://github.com/Nimdy/Dedicated_Valheim_Server_Script">GitHub - Nimdy/Dedicated_Valheim_Server_Script</a></li>
+<li data-line="102"><a href="https://medium.com/@milly16chien/gcp-upload-file-via-sftp-d57e28c3db57">[GCP] Upload file via SFTP</a></li>
 </ul>
 
 </body>
