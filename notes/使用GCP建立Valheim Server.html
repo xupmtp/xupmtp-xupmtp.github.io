@@ -1,1487 +1,675 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>使用GCP建立Valheim Server</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
 
-<html>
-<head>
-  <meta charset="UTF-8">
-  <meta name = "viewport" content = "width = device-width, initial-scale = 1, maximum-scale = 1">
-  <style id="style">
-@font-face {
-  font-family: 'Lato';
-  src: url('file:///C:/Users/simon/AppData/Local/boost/app-0.16.1/resources/app/resources/fonts/Lato-Regular.woff2') format('woff2'), /* Modern Browsers */
-       url('file:///C:/Users/simon/AppData/Local/boost/app-0.16.1/resources/app/resources/fonts/Lato-Regular.woff') format('woff'), /* Modern Browsers */
-       url('file:///C:/Users/simon/AppData/Local/boost/app-0.16.1/resources/app/resources/fonts/Lato-Regular.ttf') format('truetype');
-  font-style: normal;
-  font-weight: normal;
-  text-rendering: optimizeLegibility;
-}
-@font-face {
-  font-family: 'Lato';
-  src: url('file:///C:/Users/simon/AppData/Local/boost/app-0.16.1/resources/app/resources/fonts/Lato-Black.woff2') format('woff2'), /* Modern Browsers */
-       url('file:///C:/Users/simon/AppData/Local/boost/app-0.16.1/resources/app/resources/fonts/Lato-Black.woff') format('woff'), /* Modern Browsers */
-       url('file:///C:/Users/simon/AppData/Local/boost/app-0.16.1/resources/app/resources/fonts/Lato-Black.ttf') format('truetype');
-  font-style: normal;
-  font-weight: 700;
-  text-rendering: optimizeLegibility;
-}
-@font-face {
-  font-family: 'Material Icons';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Material Icons'),
-       local('MaterialIcons-Regular'),
-       url('file:///C:/Users/simon/AppData/Local/boost/app-0.16.1/resources/app/resources/fonts/MaterialIcons-Regular.woff2') format('woff2'),
-       url('file:///C:/Users/simon/AppData/Local/boost/app-0.16.1/resources/app/resources/fonts/MaterialIcons-Regular.woff') format('woff'),
-       url('file:///C:/Users/simon/AppData/Local/boost/app-0.16.1/resources/app/resources/fonts/MaterialIcons-Regular.ttf') format('truetype');
-}
 html,
-body,
-div,
-span,
-applet,
-object,
-iframe,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-pre,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
 a,
-abbr,
-acronym,
-address,
-big,
-cite,
-code,
-del,
-dfn,
-em,
-img,
-ins,
-kbd,
-q,
-s,
-samp,
-small,
-strike,
-strong,
-sub,
-sup,
-tt,
-var,
-dl,
-dt,
-dd,
-ol,
-ul,
-li,
-fieldset,
-form,
-label,
-legend,
-table,
-caption,
-tbody,
-tfoot,
-thead,
-tr,
-th,
-td {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  outline: 0;
-  font-weight: inherit;
-  font-style: inherit;
-  font-family: inherit;
-  font-size: 100%;
-  vertical-align: baseline;
+a.visited {
+	color: inherit;
+	text-decoration: underline;
 }
-body {
-  line-height: 1;
-  color: #000;
-  background: #fff;
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
 }
-ol,
-ul {
-  list-style: none;
-}
-table {
-  border-collapse: separate;
-  border-spacing: 0;
-  vertical-align: middle;
-}
-caption,
-th,
-td {
-  text-align: left;
-  font-weight: normal;
-  vertical-align: middle;
-}
-a img {
-  border: none;
-}
-body {
-  font-size: 16px;
-  padding: 15px;
-  font-family: helvetica, arial, sans-serif;
-  line-height: 1.6;
-  overflow-x: hidden;
-  background-color: #fff;
-}
-body .katex-display > .katex {
-  white-space: nowrap;
-}
-body .katex {
-  white-space: initial;
-}
-body .katex .katex-html {
-  display: -webkit-inline-box;
-  display: -moz-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-box;
-  display: inline-flex;
-}
-body .katex .mfrac>.vlist>span:nth-child(2) {
-  top: 0 !important;
-}
-body .katex-error {
-  background-color: #f2dede;
-  color: #a64444;
-  padding: 5px;
-  margin: -5px;
-  border-radius: 5px;
-}
-body .flowchart-error,
-body .sequence-error .chart-error {
-  background-color: #f2dede;
-  color: #a64444;
-  padding: 5px;
-  border-radius: 5px;
-  -webkit-box-pack: left;
-  -moz-box-pack: left;
-  -o-box-pack: left;
-  -ms-flex-pack: left;
-  -webkit-justify-content: left;
-  justify-content: left;
-}
-li label.taskListItem {
-  margin-left: -1.8em;
-}
-li label.taskListItem.checked {
-  text-decoration: line-through;
-  opacity: 0.5;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
-  filter: alpha(opacity=50);
-}
-li.taskListItem.checked {
-  text-decoration: line-through;
-  opacity: 0.5;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
-  filter: alpha(opacity=50);
-}
-div.math-rendered {
-  text-align: center;
-}
-.math-failed {
-  background-color: rgba(255,0,0,0.1);
-  color: #d90000;
-  padding: 5px;
-  margin: 5px 0;
-  border-radius: 5px;
-}
-sup {
-  position: relative;
-  top: -0.4em;
-  font-size: 0.8em;
-  vertical-align: top;
-}
-sub {
-  position: relative;
-  bottom: -0.4em;
-  font-size: 0.8em;
-  vertical-align: top;
-}
-a {
-  color: #2bac8f;
-  text-decoration: none;
-  padding: 5px;
-  border-radius: 5px;
-  margin: -5px;
-  -webkit-transition: 0.1s;
-  -moz-transition: 0.1s;
-  -o-transition: 0.1s;
-  -ms-transition: 0.1s;
-  transition: 0.1s;
-}
-a img {
-  vertical-align: sub;
-}
-a:hover {
-  color: #2eb899;
-  text-decoration: underline;
-  background-color: rgba(255,201,92,0.3);
-}
-a:visited {
-  color: #2bac8f;
-}
-hr {
-  border-top: none;
-  border-bottom: solid 1px #d0d0d0;
-  margin: 15px 0;
-}
+
 h1,
 h2,
-h3,
-h4,
-h5,
-h6 {
-  margin: 1em 0 1.5em;
-  line-height: 1.4;
-  font-weight: bold;
-  word-wrap: break-word;
-  padding: 0.2em 0 0.2em;
-}
-h1 {
-  font-size: 2.55em;
-  line-height: 1.2;
-  border-bottom: solid 1px #d0d0d0;
-}
-h1:first-child {
-  margin-top: 0;
-}
-h2 {
-  font-size: 1.75em;
-  line-height: 1.225;
-  border-bottom: solid 1px #d0d0d0;
-}
-h2:first-child {
-  margin-top: 0;
-}
 h3 {
-  font-size: 1.5em;
-  line-height: 1.43;
-}
-h4 {
-  font-size: 1.25em;
-  line-height: 1.4;
-}
-h5 {
-  font-size: 1em;
-  line-height: 1.1;
-}
-h6 {
-  font-size: 1em;
-  color: #777;
-}
-p {
-  line-height: 1.6em;
-  margin: 0 0 1em;
-  white-space: pre-line;
-  word-wrap: break-word;
-}
-img {
-  cursor: zoom-in;
-  max-width: 100%;
-}
-strong,
-b {
-  font-weight: bold;
-}
-em,
-i {
-  font-style: italic;
-}
-s,
-del,
-strike {
-  text-decoration: line-through;
-}
-u {
-  text-decoration: underline;
-}
-blockquote {
-  border-left: solid 4px #3fb399;
-  margin: 0 0 1em;
-  padding: 0 25px;
-}
-ul {
-  list-style-type: disc;
-  padding-left: 2em;
-  margin-bottom: 1em;
-}
-ul li {
-  display: list-item;
-}
-ul li.taskListItem {
-  list-style: none;
-}
-ul li.taskListItem>input {
-  margin-left: -1.6em;
-}
-ul li.taskListItem>p {
-  margin-left: -1.8em;
-}
-ul li p {
-  margin: 0;
-}
-ul>li>ul,
-ul>li>ol {
-  margin: 0;
-}
-ul>li>ul {
-  list-style-type: circle;
-}
-ul>li>ul>li>ul {
-  list-style-type: square;
-}
-ol {
-  list-style-type: decimal;
-  padding-left: 2em;
-  margin-bottom: 1em;
-}
-ol li {
-  display: list-item;
-}
-ol li p {
-  margin: 0;
-}
-ol>li>ul,
-ol>li>ol {
-  margin: 0;
-}
-code {
-  padding: 0.2em 0.4em;
-  background-color: #f7f7f7;
-  border-radius: 3px;
-  font-size: 1em;
-  text-decoration: none;
-  margin-right: 2px;
-}
-pre {
-  padding: 0.5rem !important;
-  border: solid 1px #d1d1d1;
-  border-radius: 5px;
-  overflow-x: auto;
-  margin: 0 0 1rem;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: box;
-  display: flex;
-  line-height: 1.4em;
-}
-pre code {
-  background-color: inherit;
-  margin: 0;
-  padding: 0;
-  border: none;
-  border-radius: 0;
-}
-pre.CodeMirror {
-  height: initial;
-  -webkit-box-lines: multiple;
-  -moz-box-lines: multiple;
-  -o-box-lines: multiple;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-}
-pre.CodeMirror>code {
-  -webkit-box-flex: 1;
-  -moz-box-flex: 1;
-  -o-box-flex: 1;
-  box-flex: 1;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  overflow-x: auto;
-}
-pre.mermaid svg {
-  max-width: 100% !important;
-}
-pre>span.filename {
-  margin: -0.5rem 100% 0.5rem -0.5rem;
-  padding: 0.125rem 0.375rem;
-  background-color: #777;
-  color: #fff;
-}
-pre>span.filename:empty {
-  display: none;
-}
-pre>span.lineNumber {
-  display: none;
-  font-size: 1em;
-  padding: 0.5rem 0;
-  margin: -0.5rem 0.5rem -0.5rem -0.5rem;
-  border-right: 1px solid;
-  text-align: right;
-  border-top-left-radius: 4px;
-  border-bottom-left-radius: 4px;
-}
-pre>span.lineNumber.CodeMirror-gutters {
-  position: initial;
-  top: initial;
-  left: initial;
-  min-height: 0 !important;
-}
-pre>span.lineNumber>span {
-  display: block;
-  padding: 0 0.5em 0;
-}
-table {
-  display: block;
-  width: 100%;
-  margin: 0 0 1em;
-  overflow-x: auto;
-}
-table thead tr {
-  background-color: #fff;
-}
-table thead th {
-  border-style: solid;
-  padding: 6px 13px;
-  line-height: 1.6;
-  border-width: 1px 0 2px 1px;
-  border-color: #d0d0d0;
-  font-weight: bold;
-}
-table thead th:last-child {
-  border-right: solid 1px #d0d0d0;
-}
-table tbody tr:nth-child(2n + 1) {
-  background-color: #f9f9f9;
-}
-table tbody tr:nth-child(2n) {
-  background-color: #fff;
-}
-table tbody td {
-  border-style: solid;
-  padding: 6px 13px;
-  line-height: 1.6;
-  border-width: 0 0 1px 1px;
-  border-color: #d0d0d0;
-}
-table tbody td:last-child {
-  border-right: solid 1px #d0d0d0;
-}
-kbd {
-  background-color: #fafbfc;
-  border: solid 1px #d0d0d0;
-  border-bottom-color: #888;
-  border-radius: 3px;
-  -webkit-box-shadow: inset 0 -1px 0 #959da5;
-  box-shadow: inset 0 -1px 0 #959da5;
-  display: inline-block;
-  font-size: 0.8em;
-  line-height: 1;
-  padding: 3px 5px;
-}
-.admonition.note,
-.admonition.hint,
-.admonition.danger,
-.admonition.caution,
-.admonition.error,
-.admonition.question,
-.admonition.quote,
-.admonition.abstract,
-.admonition.attention {
-  -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
-  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
-  position: relative;
-  margin: 1.5625em 0;
-  padding: 0 1.2rem;
-  border-left: 0.4rem solid #448aff;
-  border-radius: 0.2rem;
-  overflow: auto;
-}
-html .admonition>:last-child {
-  margin-bottom: 1.2rem;
-}
-.admonition .admonition {
-  margin: 1em 0;
-}
-.admonition p {
-  margin-top: 0.5em;
-}
-.admonition.note>.admonition-title:before,
-.admonition.hint>.admonition-title:before,
-.admonition.danger>.admonition-title:before,
-.admonition.caution>.admonition-title:before,
-.admonition.error>.admonition-title:before,
-.admonition.question>.admonition-title:before,
-.admonition.quote>.admonition-title:before,
-.admonition.abstract>.admonition-title:before,
-.admonition.attention>.admonition-title:before {
-  position: absolute;
-  left: 1.2rem;
-  font-family: "Material Icons";
-  font-weight: normal;
-  font-style: normal;
-  font-size: 24px;
-  display: inline-block;
-  line-height: 1;
-  text-transform: none;
-  letter-spacing: normal;
-  word-wrap: normal;
-  white-space: nowrap;
-  direction: ltr;
-/* Support for all WebKit browsers. */
-  -webkit-font-smoothing: antialiased;
-/* Support for Safari and Chrome. */
-  text-rendering: optimizeLegibility;
-/* Support for Firefox. */
-  -moz-osx-font-smoothing: grayscale;
-/* Support for IE. */
-  font-feature-settings: 'liga';
-}
-.admonition.note>.admonition-title,
-.admonition.hint>.admonition-title,
-.admonition.danger>.admonition-title,
-.admonition.caution>.admonition-title,
-.admonition.error>.admonition-title,
-.admonition.question>.admonition-title,
-.admonition.quote>.admonition-title,
-.admonition.abstract>.admonition-title,
-.admonition.attention>.admonition-title {
-  margin: 0 -1.2rem;
-  padding: 0.8rem 1.2rem 0.8rem 4rem;
-  border-bottom: 0.1rem solid rgba(68,138,255,0.1);
-  background-color: rgba(68,138,255,0.1);
-  font-weight: 700;
-}
-.admonition>.admonition-title:last-child {
-  margin-bottom: 0;
-}
-.admonition.note {
-  border-left-color: #0288d1;
-}
-.admonition.note>.admonition-title {
-  border-bottom-color: 0.1rem solid rgba(2,136,209,0.2);
-  background-color: rgba(2,136,209,0.2);
-}
-.admonition.note>.admonition-title:before {
-  color: #0288d1;
-  content: "note";
-}
-.admonition.hint {
-  border-left-color: #009688;
-}
-.admonition.hint>.admonition-title {
-  border-bottom-color: 0.1rem solid rgba(0,150,136,0.2);
-  background-color: rgba(0,150,136,0.2);
-}
-.admonition.hint>.admonition-title:before {
-  color: #009688;
-  content: "info_outline";
-}
-.admonition.danger {
-  border-left-color: #c2185b;
-}
-.admonition.danger>.admonition-title {
-  border-bottom-color: 0.1rem solid rgba(194,24,91,0.2);
-  background-color: rgba(194,24,91,0.2);
-}
-.admonition.danger>.admonition-title:before {
-  color: #c2185b;
-  content: "block";
-}
-.admonition.caution {
-  border-left-color: #ffa726;
-}
-.admonition.caution>.admonition-title {
-  border-bottom-color: 0.1rem solid rgba(255,167,38,0.2);
-  background-color: rgba(255,167,38,0.2);
-}
-.admonition.caution>.admonition-title:before {
-  color: #ffa726;
-  content: "warning";
-}
-.admonition.error {
-  border-left-color: #d32f2f;
-}
-.admonition.error>.admonition-title {
-  border-bottom-color: 0.1rem solid rgba(211,47,47,0.2);
-  background-color: rgba(211,47,47,0.2);
-}
-.admonition.error>.admonition-title:before {
-  color: #d32f2f;
-  content: "error_outline";
-}
-.admonition.question {
-  border-left-color: #64dd17;
-}
-.admonition.question>.admonition-title {
-  border-bottom-color: 0.1rem solid rgba(100,221,23,0.2);
-  background-color: rgba(100,221,23,0.2);
-}
-.admonition.question>.admonition-title:before {
-  color: #64dd17;
-  content: "help_outline";
-}
-.admonition.quote {
-  border-left-color: #9e9e9e;
-}
-.admonition.quote>.admonition-title {
-  border-bottom-color: 0.1rem solid rgba(158,158,158,0.2);
-  background-color: rgba(158,158,158,0.2);
-}
-.admonition.quote>.admonition-title:before {
-  color: #9e9e9e;
-  content: "format_quote";
-}
-.admonition.abstract {
-  border-left-color: #00b0ff;
-}
-.admonition.abstract>.admonition-title {
-  border-bottom-color: 0.1rem solid rgba(0,176,255,0.2);
-  background-color: rgba(0,176,255,0.2);
-}
-.admonition.abstract>.admonition-title:before {
-  color: #00b0ff;
-  content: "subject";
-}
-.admonition.attention {
-  border-left-color: #455a64;
-}
-.admonition.attention>.admonition-title {
-  border-bottom-color: 0.1rem solid rgba(69,90,100,0.2);
-  background-color: rgba(69,90,100,0.2);
-}
-.admonition.attention>.admonition-title:before {
-  color: #455a64;
-  content: "priority_high";
-}
-dl {
-  margin: 2rem 0;
-  padding: 0;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: box;
-  display: flex;
-  width: 100%;
-  -webkit-box-lines: multiple;
-  -moz-box-lines: multiple;
-  -o-box-lines: multiple;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  -webkit-box-align: start;
-  -moz-box-align: start;
-  -o-box-align: start;
-  -ms-flex-align: start;
-  -webkit-align-items: flex-start;
-  align-items: flex-start;
-  border-bottom: 1px solid #d0d0d0;
-  background-color: #fff;
-}
-dt {
-  border-top: 1px solid #d0d0d0;
-  font-weight: bold;
-  text-align: right;
-  overflow: hidden;
-  -webkit-flex-basis: 20%;
-  flex-basis: 20%;
-  padding: 0.4rem 0.9rem;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-dd {
-  border-top: 1px solid #d0d0d0;
-  -webkit-flex-basis: 80%;
-  flex-basis: 80%;
-  padding: 0.4rem 0.9rem;
-  min-height: 2.5rem;
-  background-color: #fff;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-dd + dd {
-  margin-left: 20%;
-}
-pre.fence {
-  -webkit-box-lines: multiple;
-  -moz-box-lines: multiple;
-  -o-box-lines: multiple;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-}
-pre.fence .chart,
-pre.fence .flowchart,
-pre.fence .mermaid,
-pre.fence .sequence {
-  display: -webkit-box;
-  display: -moz-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: box;
-  display: flex;
-  -webkit-box-pack: center;
-  -moz-box-pack: center;
-  -o-box-pack: center;
-  -ms-flex-pack: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  background-color: #fff;
-  max-width: 100%;
-  -webkit-box-flex: 1;
-  -moz-box-flex: 1;
-  -o-box-flex: 1;
-  -ms-box-flex: 1;
-  box-flex: 1;
-  -webkit-flex-grow: 1;
-  flex-grow: 1;
-}
-pre.fence .chart canvas,
-pre.fence .flowchart canvas,
-pre.fence .mermaid canvas,
-pre.fence .sequence canvas,
-pre.fence .chart svg,
-pre.fence .flowchart svg,
-pre.fence .mermaid svg,
-pre.fence .sequence svg {
-  max-width: 100% !important;
-}
-pre.fence .chart svg[ratio],
-pre.fence .flowchart svg[ratio],
-pre.fence .mermaid svg[ratio],
-pre.fence .sequence svg[ratio] {
-  width: 100%;
-}
-pre.fence .gallery {
-  width: 100%;
-  height: 50vh;
-}
-pre.fence .gallery .carousel .carousel-main img {
-  min-width: auto;
-  max-width: 100%;
-  min-height: auto;
-  max-height: 100%;
-}
-pre.fence .gallery .carousel .carousel-footer::-webkit-scrollbar-corner {
-  background-color: transparent;
-}
-pre.fence .gallery .carousel .carousel-main,
-pre.fence .gallery .carousel .carousel-footer {
-  background-color: #fff;
-}
-pre.fence .gallery .carousel .prev,
-pre.fence .gallery .carousel .next {
-  color: #333;
-  background-color: rgba(0,0,0,0.3);
-}
-.markdownIt-TOC-wrapper {
-  list-style: none;
-  position: fixed;
-  right: 0;
-  top: 0;
-  margin-left: 15px;
-  z-index: 1000;
-  -webkit-transition: -webkit-transform 0.2s ease-in-out;
-  -moz-transition: -moz-transform 0.2s ease-in-out;
-  -o-transition: -o-transform 0.2s ease-in-out;
-  -ms-transition: -ms-transform 0.2s ease-in-out;
-  transition: transform 0.2s ease-in-out;
-  -webkit-transform: translateX(100%);
-  -moz-transform: translateX(100%);
-  -o-transform: translateX(100%);
-  -ms-transform: translateX(100%);
-  transform: translateX(100%);
-}
-.markdownIt-TOC-wrapper .markdownIt-TOC {
-  display: block;
-  max-height: 90vh;
-  overflow-y: auto;
-  padding: 25px;
-  padding-left: 38px;
-}
-.markdownIt-TOC-wrapper,
-.markdownIt-TOC-wrapper:before {
-  background-color: #2c3033;
-  color: #ddd;
-}
-.markdownIt-TOC-wrapper:hover {
-  -webkit-transform: translateX(-15px);
-  -moz-transform: translateX(-15px);
-  -o-transform: translateX(-15px);
-  -ms-transform: translateX(-15px);
-  transform: translateX(-15px);
-}
-.markdownIt-TOC-wrapper:before {
-  content: 'TOC';
-  position: absolute;
-  width: 60px;
-  height: 30px;
-  top: 60px;
-  left: -29px;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: box;
-  display: flex;
-  -webkit-box-align: center;
-  -moz-box-align: center;
-  -o-box-align: center;
-  -ms-flex-align: center;
-  -webkit-align-items: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -moz-box-pack: center;
-  -o-box-pack: center;
-  -ms-flex-pack: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  -webkit-transform-origin: top left;
-  -moz-transform-origin: top left;
-  -o-transform-origin: top left;
-  -ms-transform-origin: top left;
-  transform-origin: top left;
-  -webkit-transform: rotate(-90deg);
-  -moz-transform: rotate(-90deg);
-  -o-transform: rotate(-90deg);
-  -ms-transform: rotate(-90deg);
-  transform: rotate(-90deg);
-}
-body[data-theme="dark"] {
-  color: #f9f9f9;
-  border-color: #444b59;
-  background-color: #2c3033;
-}
-body[data-theme="dark"] a:hover {
-  background-color: rgba(90,214,186,0.2) !important;
-}
-body[data-theme="dark"] code {
-  color: #ea6730;
-  border-color: #3d4450;
-  background-color: #363a3e;
-}
-body[data-theme="dark"] pre {
-  border-color: #474f5c;
-}
-body[data-theme="dark"] pre code {
-  background-color: transparent;
-}
-body[data-theme="dark"] label.taskListItem {
-  background-color: #2c3033;
-}
-body[data-theme="dark"] table thead tr {
-  background-color: #282b2e;
-}
-body[data-theme="dark"] table thead th {
-  border-color: #444b59;
-}
-body[data-theme="dark"] table thead th:last-child {
-  border-right: solid 1px #444b59;
-}
-body[data-theme="dark"] table tbody tr:nth-child(2n + 1) {
-  background-color: #2c3033;
-}
-body[data-theme="dark"] table tbody tr:nth-child(2n) {
-  background-color: #282b2e;
-}
-body[data-theme="dark"] table tbody td {
-  border-color: #444b59;
-}
-body[data-theme="dark"] table tbody td:last-child {
-  border-right: solid 1px #444b59;
-}
-body[data-theme="dark"] kbd {
-  background-color: #444b59;
-  color: #f9f9f9;
-}
-body[data-theme="dark"] dl {
-  border-color: #444b59;
-  background-color: #282b2e;
-}
-body[data-theme="dark"] dt {
-  border-color: #444b59;
-}
-body[data-theme="dark"] dd {
-  border-color: #444b59;
-  background-color: #2c3033;
-}
-body[data-theme="dark"] pre.fence .gallery .carousel-main,
-body[data-theme="dark"] pre.fence .gallery .carousel-footer {
-  background-color: #2c3033;
-}
-body[data-theme="dark"] pre.fence .gallery .prev,
-body[data-theme="dark"] pre.fence .gallery .next {
-  color: #ddd;
-  background-color: #3a404c;
-}
-body[data-theme="dark"] .markdownIt-TOC-wrapper,
-body[data-theme="dark"] .markdownIt-TOC-wrapper:before {
-  background-color: #1c1f25;
-  color: #f9f9f9;
-}
-body[data-theme=solarized-dark] {
-  color: #93a1a1;
-  border-color: #444b59;
-  background-color: #073642;
-}
-body[data-theme=solarized-dark] table thead tr {
-  background-color: #06313b;
-}
-body[data-theme=solarized-dark] table thead th {
-  border-color: #444b59;
-}
-body[data-theme=solarized-dark] table thead th:last-child {
-  border-right: solid 1px #444b59;
-}
-body[data-theme=solarized-dark] table tbody tr:nth-child(2n + 1) {
-  background-color: #073642;
-}
-body[data-theme=solarized-dark] table tbody tr:nth-child(2n) {
-  background-color: #06313b;
-}
-body[data-theme=solarized-dark] table tbody td {
-  border-color: #444b59;
-}
-body[data-theme=solarized-dark] table tbody td:last-child {
-  border-right: solid 1px #444b59;
-}
-body[data-theme=solarized-dark] kbd {
-  background-color: #1e2127;
-  color: #93a1a1;
-}
-body[data-theme=solarized-dark] dl {
-  border-color: #444b59;
-  background-color: #06313b;
-}
-body[data-theme=solarized-dark] dt {
-  border-color: #444b59;
-}
-body[data-theme=solarized-dark] dd {
-  border-color: #444b59;
-  background-color: #073642;
-}
-body[data-theme=solarized-dark] pre.fence .gallery .carousel-main,
-body[data-theme=solarized-dark] pre.fence .gallery .carousel-footer {
-  background-color: #073642;
-}
-body[data-theme=solarized-dark] pre.fence .gallery .prev,
-body[data-theme=solarized-dark] pre.fence .gallery .next {
-  color: #93a1a1;
-  background-color: #002b36;
-}
-body[data-theme=solarized-dark] .markdownIt-TOC-wrapper,
-body[data-theme=solarized-dark] .markdownIt-TOC-wrapper:before {
-  background-color: #062e38;
-  color: #f9f9f9;
-}
-body[data-theme=dracula] {
-  color: #f8f8f2;
-  border-color: #444b59;
-  background-color: #282a36;
-}
-body[data-theme=dracula] table thead tr {
-  background-color: #242631;
-}
-body[data-theme=dracula] table thead th {
-  border-color: #444b59;
-}
-body[data-theme=dracula] table thead th:last-child {
-  border-right: solid 1px #444b59;
-}
-body[data-theme=dracula] table tbody tr:nth-child(2n + 1) {
-  background-color: #282a36;
-}
-body[data-theme=dracula] table tbody tr:nth-child(2n) {
-  background-color: #242631;
-}
-body[data-theme=dracula] table tbody td {
-  border-color: #444b59;
-}
-body[data-theme=dracula] table tbody td:last-child {
-  border-right: solid 1px #444b59;
-}
-body[data-theme=dracula] kbd {
-  background-color: #1e2127;
-  color: #f8f8f2;
-}
-body[data-theme=dracula] dl {
-  border-color: #444b59;
-  background-color: #242631;
-}
-body[data-theme=dracula] dt {
-  border-color: #444b59;
-}
-body[data-theme=dracula] dd {
-  border-color: #444b59;
-  background-color: #282a36;
-}
-body[data-theme=dracula] pre.fence .gallery .carousel-main,
-body[data-theme=dracula] pre.fence .gallery .carousel-footer {
-  background-color: #282a36;
-}
-body[data-theme=dracula] pre.fence .gallery .prev,
-body[data-theme=dracula] pre.fence .gallery .next {
-  color: #f8f8f2;
-  background-color: #44475a;
-}
-body[data-theme=dracula] .markdownIt-TOC-wrapper,
-body[data-theme=dracula] .markdownIt-TOC-wrapper:before {
-  background-color: #22242e;
-  color: #f9f9f9;
-}
-body[data-theme=monokai] {
-  color: #f8f8f2;
-  border-color: #444b59;
-  background-color: #272822;
-}
-body[data-theme=monokai] table thead tr {
-  background-color: #23241f;
-}
-body[data-theme=monokai] table thead th {
-  border-color: #444b59;
-}
-body[data-theme=monokai] table thead th:last-child {
-  border-right: solid 1px #444b59;
-}
-body[data-theme=monokai] table tbody tr:nth-child(2n + 1) {
-  background-color: #272822;
-}
-body[data-theme=monokai] table tbody tr:nth-child(2n) {
-  background-color: #23241f;
-}
-body[data-theme=monokai] table tbody td {
-  border-color: #444b59;
-}
-body[data-theme=monokai] table tbody td:last-child {
-  border-right: solid 1px #444b59;
-}
-body[data-theme=monokai] kbd {
-  background-color: #1e2127;
-  color: #f8f8f2;
-}
-body[data-theme=monokai] dl {
-  border-color: #444b59;
-  background-color: #23241f;
-}
-body[data-theme=monokai] dt {
-  border-color: #444b59;
-}
-body[data-theme=monokai] dd {
-  border-color: #444b59;
-  background-color: #272822;
-}
-body[data-theme=monokai] pre.fence .gallery .carousel-main,
-body[data-theme=monokai] pre.fence .gallery .carousel-footer {
-  background-color: #272822;
-}
-body[data-theme=monokai] pre.fence .gallery .prev,
-body[data-theme=monokai] pre.fence .gallery .next {
-  color: #fff;
-  background-color: #373831;
-}
-body[data-theme=monokai] .markdownIt-TOC-wrapper,
-body[data-theme=monokai] .markdownIt-TOC-wrapper:before {
-  background-color: #21221d;
-  color: #f9f9f9;
-}
-body[data-theme=nord] {
-  color: #d8dee9;
-  border-color: #444b59;
-  background-color: #2e3440;
-}
-body[data-theme=nord] table thead tr {
-  background-color: #292f3a;
-}
-body[data-theme=nord] table thead th {
-  border-color: #444b59;
-}
-body[data-theme=nord] table thead th:last-child {
-  border-right: solid 1px #444b59;
-}
-body[data-theme=nord] table tbody tr:nth-child(2n + 1) {
-  background-color: #2e3440;
-}
-body[data-theme=nord] table tbody tr:nth-child(2n) {
-  background-color: #292f3a;
-}
-body[data-theme=nord] table tbody td {
-  border-color: #444b59;
-}
-body[data-theme=nord] table tbody td:last-child {
-  border-right: solid 1px #444b59;
-}
-body[data-theme=nord] kbd {
-  background-color: #d8dee9;
-  color: #2e3440;
-}
-body[data-theme=nord] dl {
-  border-color: #444b59;
-  background-color: #292f3a;
-}
-body[data-theme=nord] dt {
-  border-color: #444b59;
-}
-body[data-theme=nord] dd {
-  border-color: #444b59;
-  background-color: #2e3440;
-}
-body[data-theme=nord] pre.fence .gallery .carousel-main,
-body[data-theme=nord] pre.fence .gallery .carousel-footer {
-  background-color: #2e3440;
-}
-body[data-theme=nord] pre.fence .gallery .prev,
-body[data-theme=nord] pre.fence .gallery .next {
-  color: #d8dee9;
-  background-color: #434c5e;
-}
-body[data-theme=nord] .markdownIt-TOC-wrapper,
-body[data-theme=nord] .markdownIt-TOC-wrapper:before {
-  background-color: #272c36;
-  color: #f9f9f9;
-}
-body[data-theme=vulcan] {
-  color: #999;
-  border-color: #444b59;
-  background-color: #161719;
-}
-body[data-theme=vulcan] table thead tr {
-  background-color: #141517;
-}
-body[data-theme=vulcan] table thead th {
-  border-color: #444b59;
-}
-body[data-theme=vulcan] table thead th:last-child {
-  border-right: solid 1px #444b59;
-}
-body[data-theme=vulcan] table tbody tr:nth-child(2n + 1) {
-  background-color: #161719;
-}
-body[data-theme=vulcan] table tbody tr:nth-child(2n) {
-  background-color: #141517;
-}
-body[data-theme=vulcan] table tbody td {
-  border-color: #444b59;
-}
-body[data-theme=vulcan] table tbody td:last-child {
-  border-right: solid 1px #444b59;
-}
-body[data-theme=vulcan] kbd {
-  background-color: #ccc;
-  color: #161719;
-}
-body[data-theme=vulcan] dl {
-  border-color: #444b59;
-  background-color: #141517;
-}
-body[data-theme=vulcan] dt {
-  border-color: #444b59;
-}
-body[data-theme=vulcan] dd {
-  border-color: #444b59;
-  background-color: #161719;
-}
-body[data-theme=vulcan] pre.fence .gallery .carousel-main,
-body[data-theme=vulcan] pre.fence .gallery .carousel-footer {
-  background-color: #161719;
-}
-body[data-theme=vulcan] pre.fence .gallery .prev,
-body[data-theme=vulcan] pre.fence .gallery .next {
-  color: #a3a8ae;
-  background-color: #282a2e;
-}
-body[data-theme=vulcan] .markdownIt-TOC-wrapper,
-body[data-theme=vulcan] .markdownIt-TOC-wrapper:before {
-  background-color: #131415;
-  color: #f9f9f9;
-}
-/*# sourceMappingURL=browser/components/markdown.css.map */
-
-body {
-  font-family: 'Segoe UI','meiryo','Microsoft YaHei','helvetica','arial','sans-serif';
-  font-size: 14px;
-  false
-  undefined
-}
-@media print {
-  body {
-    padding-bottom: initial;
-  }
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
 }
 
-code {
-  font-family: 'Consolas','Monaco','Menlo','Ubuntu Mono','Consolas','source-code-pro','monospace';
-  background-color: rgba(0,0,0,0.04);
-  text-align: left;
-  direction: ltr;
-}
-
-p code,
-li code,
-td code
-{
-  padding: 2px;
-  border-width: 1px;
-  border-style: solid;
-  border-radius: 5px;
-}
-[data-theme="default"] p code,
-[data-theme="default"] li code,
-[data-theme="default"] td code
-{
-  background-color: #F4F4F4;
-  border-color: #d9d9d9;
-  color: inherit;
-}
-[data-theme="white"] p code,
-[data-theme="white"] li code,
-[data-theme="white"] td code
-{
-  background-color: #F4F4F4;
-  border-color: #d9d9d9;
-  color: inherit;
-}
-[data-theme="dark"] p code,
-[data-theme="dark"] li code,
-[data-theme="dark"] td code
-{
-  background-color: #444444;
-  border-color: #555;
-  color: #FFFFFF;
-}
-[data-theme="dracula"] p code,
-[data-theme="dracula"] li code,
-[data-theme="dracula"] td code
-{
-  background-color: #444444;
-  border-color: #555;
-  color: #FFFFFF;
-}
-[data-theme="monokai"] p code,
-[data-theme="monokai"] li code,
-[data-theme="monokai"] td code
-{
-  background-color: #444444;
-  border-color: #555;
-  color: #FFFFFF;
-}
-[data-theme="nord"] p code,
-[data-theme="nord"] li code,
-[data-theme="nord"] td code
-{
-  background-color: #444444;
-  border-color: #555;
-  color: #FFFFFF;
-}
-[data-theme="solarized-dark"] p code,
-[data-theme="solarized-dark"] li code,
-[data-theme="solarized-dark"] td code
-{
-  background-color: #444444;
-  border-color: #555;
-  color: #FFFFFF;
-}
-[data-theme="vulcan"] p code,
-[data-theme="vulcan"] li code,
-[data-theme="vulcan"] td code
-{
-  background-color: #444444;
-  border-color: #555;
-  color: #FFFFFF;
-}
-
-.lineNumber {
-  display: block !important;
-  font-family: 'Consolas','Monaco','Menlo','Ubuntu Mono','Consolas','source-code-pro','monospace';
-}
-
-.clipboardButton {
-  color: rgba(147,147,149,0.8);;
-  fill: rgba(147,147,149,1);;
-  border-radius: 50%;
-  margin: 0px 10px;
-  border: none;
-  background-color: transparent;
-  outline: none;
-  height: 15px;
-  width: 15px;
-  cursor: pointer;
-}
-
-.clipboardButton:hover {
-  transition: 0.2s;
-  color: #939395;
-  fill: #939395;
-  background-color: rgba(0,0,0,0.1);
-}
-
-h1, h2 {
-  border: none;
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
 }
 
 h1 {
-  padding-bottom: 4px;
-  margin: 1em 0 8px;
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
 }
 
 h2 {
-  padding-bottom: 0.2em;
-  margin: 1em 0 0.37em;
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
 }
 
-body p {
-  white-space: normal;
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
 }
 
-@media print {
-  body[data-theme="default"] {
-    color: #000;
-    background-color: #fff;
-  }
-  .clipboardButton {
-    display: none
-  }
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
 }
 
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
 
-</style>
-  <link rel="stylesheet" href="css/duotone-light.css">
-<link rel="stylesheet" href="css/katex.min.css">
-<link rel="stylesheet" href="css/codemirror.css">
-<link rel="stylesheet" href="css/main.min.css">
-  
-  <script></script>
-</head>
-<body data-theme="default">
-<h1 id="%E4%BD%BF%E7%94%A8GCP%E5%BB%BA%E7%AB%8BValheim-Server" data-line="0">使用GCP建立Valheim Server</h1>
-<hr />
-<h3 id="%E6%AD%A5%E9%A9%9F%E8%AA%AA%E6%98%8E" data-line="2">步驟說明</h3>
-<ol>
-<li data-line="3">在Google Cloud Platform(GCP)上建立VM</li>
-<li data-line="4">安裝Valheim Server</li>
-<li data-line="5">搬移舊地圖</li>
-</ol>
-<h3 id="%E5%BB%BA%E7%AB%8BVM" data-line="7">建立VM</h3>
-<h5 id="1-%E5%95%9F%E5%8B%95GCP%E6%9C%8D%E5%8B%99" data-line="8">1. 啟動GCP服務</h5>
-<ol>
-<li data-line="9">進入<a href="https://www.googleadservices.com/pagead/aclk?sa=L&amp;ai=DChcSEwiWmLW_68fvAhXqg0sFHQV0AvoYABAAGgJzZg&amp;ohost=www.google.com&amp;cid=CAESQOD2nXocpuhQFzEfjOyYQLfminnr1m7SzkXWjXyDozsGab-FEL1qNrN2EohTS2DowpNxJCoUEdHNUtfuuWjHzsM&amp;sig=AOD64_3qVXNsSHIpS1fZzy_217Ork8gg6g&amp;q&amp;adurl&amp;ved=2ahUKEwjw1qy_68fvAhWzIaYKHR4yB2gQ0Qx6BAgCEAE">Google Cloud</a>頁面</li>
-<li data-line="10">點選免費試用並輸入信用卡資訊(3個月試用期，結束可解除綁定)</li>
-<li data-line="11">新增專案</li>
-</ol>
-<h5 id="2-%E5%BB%BA%E7%AB%8Bvm" data-line="13">2. 建立vm</h5>
-<ol>
-<li data-line="14">點選左邊工具列 -&gt; Compute Engine -&gt; VM執行個體 -&gt; 建立<br />
-<img src="https://xupmtp.github.io/img/gcp0.jpg" width="800px" /></li>
-<li data-line="16">填入圖中圈起部分，其中藍色須按圖中資料填寫，紅色可根據自身需求修改，完成後按建立便完成
-<ul>
-<li data-line="17">左邊區域可依自身所在區域設定，右邊區域選擇任一選項皆可，沒特別影響</li>
-<li data-line="18">核心部分最低2vCPU/4GB，提供3~5人遊戲已十分夠用，若進入遊戲內覺得卡頓可再調高(若調高須注意流量是否夠用)<br />
-<img src="https://xupmtp.github.io/img/gcp1.jpg" width="400px" /></li>
-<li data-line="20">變更按鈕調整作業系統設定，防火牆未勾選會讓其他玩家無法連線<br />
-<img src="https://xupmtp.github.io/img/gcp3.jpg" width="400px" /></li>
-<li data-line="22">點選變更後按下圖輸入，100G以valheim來說已經十分夠用<br />
-<img src="https://xupmtp.github.io/img/gcp2.jpg" width="650px" /></li>
-</ul>
-</li>
-</ol>
-<h5 id="3-%E4%BF%AE%E6%94%B9%E5%B0%8D%E5%A4%96IP" data-line="25">3. 修改對外IP</h5>
-<ol>
-<li data-line="26">點選左邊工具列 -&gt; VPC網路 -&gt; 外部IP位址</li>
-<li data-line="27">選擇類型，修改臨時-&gt;靜態(使用者必須是你的vm名稱) -&gt; 名稱自訂 -&gt; 確定<br />
-<img src="https://xupmtp.github.io/img/gcp4.jpg" width="800px" /></li>
-</ol>
-<h5 id="4-%E4%BF%AE%E6%94%B9%E9%98%B2%E7%81%AB%E7%89%86" data-line="30">4. 修改防火牆</h5>
-<ol>
-<li data-line="31">點選左邊防火牆 -&gt; 建立防火牆規則</li>
-<li data-line="32">輸入名稱及圖中欄位(欄位值須相同)<br />
-<img src="https://xupmtp.github.io/img/gcp5.jpg" width="800px" /></li>
-<li data-line="34">點選建立便完成</li>
-</ol>
-<h3 id="%E5%AE%89%E8%A3%9DValheim-Server" data-line="36">安裝Valheim Server</h3>
-<p data-line="37">回到VM執行個體 -&gt; 在列表會看到剛剛建立的vm，點選SSH開啟Command Line視窗 -&gt; 按步驟輸入下面指令</p>
-<blockquote data-line="38">
-<p data-line="38">所有指令要加<code>sudo</code>才會以管理員身分執行</p>
-</blockquote>
-<ol>
-<li data-line="39">確認網路安裝工具：<code>sudo apt-get install -y git net-tools</code></li>
-<li data-line="40">進入opt資料夾：<code>cd /opt</code></li>
-<li data-line="41">下載安裝包：<code>sudo git clone https://github.com/Nimdy/Dedicated_Valheim_Server_Script.git</code></li>
-<li data-line="42">進入安裝包資料夾：<code>cd Dedicated_Valheim_Server_Script/</code></li>
-<li data-line="43">開啟安裝包權限：<code>sudo chmod +x menu.sh</code></li>
-<li data-line="44">進入安裝包選單：<code>sudo ./menu.sh</code></li>
-<li data-line="45">選擇安裝伺服器：<code>3</code>, 然後選擇<code>1</code>(安裝) 再按<code>y</code></li>
-<li data-line="46">建立 Linux 本地密碼：包含一個數字，一個大寫和一個小寫字母</li>
-<li data-line="47">建立伺服器名稱</li>
-<li data-line="48">建立世界名稱(若要轉移舊資料，世界名稱須和舊世界相同)</li>
-<li data-line="49">建立伺服器密碼：至少5個字，包含一個數字，一個大寫和一個小寫字母(連進遊戲時輸入的密碼)</li>
-<li data-line="50">過程中有需要輸入y/n的都打y</li>
-<li data-line="51">最後要重啟VM。關閉Command Line視窗，回到VM執行個體 -&gt; 勾選建立的VM -&gt; 點選上方停止按鈕 -&gt; 點選 開始/繼續</li>
-<li data-line="52">完成後便可開啟遊戲測試連線,在vm執行個體會看到外部IP，這是在遊戲中輸入<strong>Join IP</strong>時所用到的IP位置，密碼則是步驟11設定的伺服器密碼</li>
-<li data-line="53">成功後便可開始遊戲，如果之前玩到一半要遷移舊資料到VM的看<a href="#搬移地圖檔案">搬移地圖檔案</a></li>
-</ol>
-<h5 id="%E4%BC%BA%E6%9C%8D%E5%99%A8%E6%9B%B4%E6%96%B0" data-line="55">伺服器更新</h5>
-<p data-line="56">當官方有任何更新時必須手動重啟伺服器，更新內容才會同步到遊戲中，停止後須等待約1分鐘再啟動</p>
-<ol>
-<li data-line="57">停止伺服器：<code>sudo systemctl stop valheimserver.service</code></li>
-<li data-line="58">啟動伺服器：<code>sudo systemctl start valheimserver.service</code></li>
-</ol>
-<p data-line="60">或是到上面步驟6的選單中輸入代號重啟14</p>
-<blockquote data-line="61">
-<p data-line="61">若重啟後有任何問題可以停止伺服器 -&gt; 重啟VM -&gt; 啟動伺服器</p>
-</blockquote>
-<h3 id="%E6%90%AC%E7%A7%BB%E5%9C%B0%E5%9C%96%E6%AA%94%E6%A1%88" data-line="63">搬移地圖檔案</h3>
-<ul>
-<li data-line="64">要搬移Valheim地圖資料須將<code>worlds/</code>資料夾下所有檔案搬移過去,不同主機存放目錄不相同<br />
-Windows<br />
-<code>C:\Users\USERNAME\AppData\LocalLow\IronGate\Valheim\worlds\</code><br />
-Linux<br />
-<code>/home/steam/.config/unity3d/IronGate/Valheim/worlds/</code></li>
-<li data-line="69">我們須透過SFTP將資料上傳至VM中</li>
-</ul>
-<h5 id="%E5%8F%96%E5%BE%97%E5%85%AC%E7%A7%81%E9%91%B0" data-line="70">取得公私鑰</h5>
-<p data-line="71">要連線至VM中最快的方式是使用金鑰的方式</p>
-<ol>
-<li data-line="72">首先下載<a href="https://www.puttygen.com/download.php?val=49">PuTTYgen</a>並執行</li>
-<li data-line="73">勾選下面幾項後按<strong>Generate</strong><br />
-<img src="https://xupmtp.github.io/img/gcp6.jpg" width="400px" /></li>
-<li data-line="75">修改Key comment為建立VM的mail名稱(例如我的mail是example@gamil.com則輸入example)</li>
-<li data-line="76">複製圖中紅框部分之後會用到，然後按Save private key(有任何彈窗都按確認)<br />
-<img src="https://xupmtp.github.io/img/gcp7.jpg" width="400px" /></li>
-<li data-line="78">回到GCP -&gt; 點選左邊工具列 -&gt; Compute Engine -&gt; 中繼資料 -&gt; 安全殼層金鑰</li>
-<li data-line="79">點選編輯 -&gt; 新增項目 -&gt; 將複製內容貼到這裡 -&gt; 儲存</li>
-<li data-line="80">到這裡便完成公私鑰的設定了</li>
-</ol>
-<h5 id="%E4%B8%8A%E5%82%B3%E5%9C%B0%E5%9C%96%E6%AA%94" data-line="82">上傳地圖檔</h5>
-<ol>
-<li data-line="83">首先下載<a href="https://filezilla-project.org/">FileZilla</a></li>
-<li data-line="84">開啟後 檔案 -&gt; 站台管理員 -&gt; 新增站台(名稱自訂)</li>
-<li data-line="85">按下圖輸入欄位，藍框部分須和圖中相同，紅框填入自己的
-<ul>
-<li data-line="86">主機填入VM的對外IP</li>
-<li data-line="87">使用者和Key comment的值相同</li>
-<li data-line="88">金鑰檔案是之前儲存的private key檔案位置<br />
-<img src="https://xupmtp.github.io/img/gcp8.jpg" width="500px" /></li>
-</ul>
-</li>
-<li data-line="90">點選連線，若連線成功代表設定正確，若上面有任一步驟錯誤皆可能讓連線失敗</li>
-<li data-line="91">將<code>worlds/</code>資料夾下所有檔案先拖移到<code>/home/USERNAME/</code>底下</li>
-<li data-line="92">開啟VM command line</li>
-<li data-line="93">停止伺服器：<code>sudo systemctl stop valheimserver.service</code></li>
-<li data-line="94">cd到USERNMAE目錄(EX:<code>cd /home/example</code>)</li>
-<li data-line="95">搬移所有檔案到worlds目錄 : <code>sudo mv * /home/steam/.config/unity3d/IronGate/Valheim/worlds/</code></li>
-<li data-line="96">按<a href="#伺服器更新">伺服器更新</a>步驟重啟伺服器</li>
-<li data-line="97">開啟遊戲確認地圖是否已更新</li>
-</ol>
-<h3 id="%E5%8F%83%E8%80%83" data-line="99">參考</h3>
-<ul>
-<li data-line="100"><a href="https://www.youtube.com/watch?v=2WjFBp1Opr4">如何架設瓦爾海姆GCP獨立伺服器</a></li>
-<li data-line="101"><a href="https://github.com/Nimdy/Dedicated_Valheim_Server_Script">GitHub - Nimdy/Dedicated_Valheim_Server_Script</a></li>
-<li data-line="102"><a href="https://medium.com/@milly16chien/gcp-upload-file-via-sftp-d57e28c3db57">[GCP] Upload file via SFTP</a></li>
-</ul>
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
 
-</body>
-</html>
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="8364f3b7-e0c9-4cf3-8c4d-91f401e0c790" class="page sans"><header><h1 class="page-title">使用GCP建立Valheim Server</h1><table class="properties"><tbody></tbody></table></header><div class="page-body"><nav id="c4f45356-41ff-48ed-a86c-2e00f5ba09c0" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#456d393b-7a23-406a-a058-7780fa63390f">步驟</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#f073b212-5935-4de4-ba39-4a2ae05f93c4">建立VM</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1b34aff4-4ac4-4808-9f07-92e8617e7468">1. 啟動GCP服務</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#94fc474d-169f-4952-aa4a-ee466b0f73e5">2. 建立vm</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#ee272e9f-7979-408f-a5f8-b947f225d542">3. 修改對外IP</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#26cf789d-e7b7-4f2a-8897-47273e0c59d6">4. 修改防火牆</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#ee38213d-dbf2-41cd-8be0-7a12e54fb703">安裝Valheim Server</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2045a8c9-7470-4787-8528-3cfaa8a828a8">伺服器更新</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#a5170346-8c60-4c46-b92e-b57b2d5f86b4">搬移地圖檔案</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#b1f4d2ae-f095-45c0-92d5-ccd4fe905fb4">取得公私鑰</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#6f1e1f80-9d27-4f25-bc2d-0f71132e3c1a">上傳地圖檔</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#36a91483-a3d9-4c83-b703-a48d548d3a8f">Linux SSH連線到Server</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1b9aa9e0-948f-4f9b-a7a4-b105dbddb0da">建立公私鑰</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#0eb4c9fd-5cd9-42ab-a5bb-6f2d58845c0e">公鑰放到GCP上</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#371e6851-6145-4222-b54a-1d2fce4068b2">ssh連線到server</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#00fc7f22-65ae-47c1-ad35-5015b4a01bc2">複製server檔案</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#4ec77862-5154-4cd5-84dd-bfc9f856c171">參考</a></div></nav><h1 id="456d393b-7a23-406a-a058-7780fa63390f" class="">步驟</h1><ol type="1" id="c0b53b11-501c-4ddd-a285-e2382750b77e" class="numbered-list" start="1"><li>在Google Cloud Platform(GCP)上建立VM</li></ol><ol type="1" id="68844aea-e30d-410a-8fa7-30e1e0b734ad" class="numbered-list" start="2"><li>安裝Valheim Server</li></ol><ol type="1" id="ff2a83d4-6ff3-4415-8236-ef55e04419f3" class="numbered-list" start="3"><li>搬移舊地圖</li></ol><h1 id="f073b212-5935-4de4-ba39-4a2ae05f93c4" class="">建立VM</h1><h3 id="1b34aff4-4ac4-4808-9f07-92e8617e7468" class="">1. 啟動GCP服務</h3><ol type="1" id="6e9e05ed-c9f8-4865-a0f0-ff1d86780ef2" class="numbered-list" start="1"><li>進入<a href="https://www.googleadservices.com/pagead/aclk?sa=L&amp;ai=DChcSEwiWmLW_68fvAhXqg0sFHQV0AvoYABAAGgJzZg&amp;ohost=www.google.com&amp;cid=CAESQOD2nXocpuhQFzEfjOyYQLfminnr1m7SzkXWjXyDozsGab-FEL1qNrN2EohTS2DowpNxJCoUEdHNUtfuuWjHzsM&amp;sig=AOD64_3qVXNsSHIpS1fZzy_217Ork8gg6g&amp;q&amp;adurl&amp;ved=2ahUKEwjw1qy_68fvAhWzIaYKHR4yB2gQ0Qx6BAgCEAE">Google Cloud</a>頁面</li></ol><ol type="1" id="2e304702-7c0a-4b69-b647-f8cfb0d70eb6" class="numbered-list" start="2"><li>點選免費試用並輸入信用卡資訊(3個月試用期，結束可解除綁定)</li></ol><ol type="1" id="5469d927-3aa4-42b6-a398-717d007ce0e9" class="numbered-list" start="3"><li>新增專案</li></ol><h3 id="94fc474d-169f-4952-aa4a-ee466b0f73e5" class="">2. 建立vm</h3><ol type="1" id="f0c39537-68f1-409e-8b6b-0e484d0eeb32" class="numbered-list" start="1"><li>點選左邊工具列 -&gt; Compute Engine -&gt; VM執行個體 -&gt; 建立<figure id="afd3e820-a2e5-4e70-950d-ede27bd33f7d" class="image"><a href="https://xupmtp.github.io/img/gcp0.jpg"><img src="https://xupmtp.github.io/img/gcp0.jpg"/></a></figure></li></ol><ol type="1" id="9796e7fa-bf21-4489-80e7-13573e96aec4" class="numbered-list" start="2"><li>填入圖中圈起部分，其中藍色須按圖中資料填寫，紅色可根據自身需求修改，完成後按建立便完成<ul id="b21a68ff-ed03-4b0e-a319-6a93a093b768" class="bulleted-list"><li style="list-style-type:disc">左邊區域可依自身所在區域設定，右邊區域選擇任一選項皆可，沒特別影響</li></ul><ul id="08d8edeb-b493-400b-a059-d81db8f4051f" class="bulleted-list"><li style="list-style-type:disc">核心部分最低2vCPU/4GB，提供3~5人遊戲已十分夠用，若進入遊戲內覺得卡頓可再調高(若調高須注意流量是否夠用)<figure id="ee98f97b-3ab4-4e58-9b75-ff55aa92e6e0" class="image"><a href="https://xupmtp.github.io/img/gcp1.jpg"><img src="https://xupmtp.github.io/img/gcp1.jpg"/></a></figure></li></ul><ul id="afeb86c8-103f-47ea-99bd-e48703337d66" class="bulleted-list"><li style="list-style-type:disc">變更按鈕調整作業系統設定，防火牆未勾選會讓其他玩家無法連線<figure id="3550e88c-349c-4bd4-a63e-d57441ae002b" class="image"><a href="https://xupmtp.github.io/img/gcp3.jpg"><img src="https://xupmtp.github.io/img/gcp3.jpg"/></a></figure></li></ul><ul id="fb23c2cd-ca9d-4f20-85e0-15974476e6f3" class="bulleted-list"><li style="list-style-type:disc">點選變更後按下圖輸入，100G以valheim來說已經十分夠用<figure id="af8e35e9-942a-4fc0-bbd9-e633dbf0f43a" class="image"><a href="https://xupmtp.github.io/img/gcp2.jpg"><img src="https://xupmtp.github.io/img/gcp2.jpg"/></a></figure></li></ul></li></ol><h3 id="ee272e9f-7979-408f-a5f8-b947f225d542" class="">3. 修改對外IP</h3><ol type="1" id="0a2098b7-38d2-4391-8e9d-96d281726e9f" class="numbered-list" start="1"><li>點選左邊工具列 -&gt; VPC網路 -&gt; 外部IP位址</li></ol><ol type="1" id="d3bd72bc-52ee-410e-84c6-a051e3b9a3cd" class="numbered-list" start="2"><li>選擇類型，修改臨時-&gt;靜態(使用者必須是你的vm名稱) -&gt; 名稱自訂 -&gt; 確定<figure id="1e8692bc-7598-490d-9e55-c7ff09b4e9c3" class="image"><a href="https://xupmtp.github.io/img/gcp4.jpg"><img src="https://xupmtp.github.io/img/gcp4.jpg"/></a></figure></li></ol><h3 id="26cf789d-e7b7-4f2a-8897-47273e0c59d6" class="">4. 修改防火牆</h3><ol type="1" id="48b34c87-dd83-45f9-90ee-53b8d2b83eb5" class="numbered-list" start="1"><li>點選左邊防火牆 -&gt; 建立防火牆規則</li></ol><ol type="1" id="b924258d-b32e-485b-b912-51fdfdbf0191" class="numbered-list" start="2"><li>輸入名稱及圖中欄位(欄位值須相同)<figure id="3c7fe1d8-1c85-4c46-8878-695916c8641d" class="image"><a href="https://xupmtp.github.io/img/gcp5.jpg"><img src="https://xupmtp.github.io/img/gcp5.jpg"/></a></figure></li></ol><ol type="1" id="a50fb2b3-47ab-48a9-9965-c3fef328fcbf" class="numbered-list" start="3"><li>點選建立便完成</li></ol><h1 id="ee38213d-dbf2-41cd-8be0-7a12e54fb703" class="">安裝Valheim Server</h1><p id="bbbf13bc-c9f8-4ef2-8cde-0176670097f5" class="">回到VM執行個體 -&gt; 在列表會看到剛剛建立的vm，點選SSH開啟Command Line視窗 -&gt; 按步驟輸入下面指令</p><blockquote id="c4192469-2a2b-405d-8a3d-7e0c6daa329b" class="">所有指令要加sudo才會以管理員身分執行</blockquote><ol type="1" id="3eb42ec1-d3fc-4aba-be97-86f925c9bac1" class="numbered-list" start="1"><li>確認網路安裝工具：<code>sudo apt-get install -y git net-tools</code></li></ol><ol type="1" id="a3ae4b22-3905-4dbd-b839-d864bb731423" class="numbered-list" start="2"><li>進入opt資料夾：<code>cd /opt</code></li></ol><ol type="1" id="a98ceecd-ae6f-4a8e-9234-f40be64f2b39" class="numbered-list" start="3"><li>下載安裝包：<code>sudo git clone &lt;https://github.com/Nimdy/Dedicated_Valheim_Server_Script.git</code>&gt;</li></ol><ol type="1" id="12b233b3-b80e-4e8c-b1b9-beef77523baa" class="numbered-list" start="4"><li>進入安裝包資料夾：<code>cd Dedicated_Valheim_Server_Script/</code></li></ol><ol type="1" id="3a0595f8-40b9-4609-a089-8cfbdce7da9e" class="numbered-list" start="5"><li>開啟安裝包權限：<code>sudo chmod +x menu.sh</code></li></ol><ol type="1" id="6fad8ff8-aa5d-41e0-a310-eed904243029" class="numbered-list" start="6"><li>進入安裝包選單：<code>sudo ./menu.sh</code></li></ol><ol type="1" id="ed09382a-e225-43f5-8ff0-50481facda25" class="numbered-list" start="7"><li>選擇安裝伺服器：<code>3</code>, 然後選擇<code>1</code>(安裝) 再按<code>y</code></li></ol><ol type="1" id="79235831-eb43-4593-a41b-4b6be7b17c36" class="numbered-list" start="8"><li>建立 Linux 本地密碼：包含一個數字，一個大寫和一個小寫字母</li></ol><ol type="1" id="886203d2-bcfe-4d9b-9587-94a0e0a8ad19" class="numbered-list" start="9"><li>建立伺服器名稱</li></ol><ol type="1" id="4054090d-624e-46f2-a5fd-169471a2161b" class="numbered-list" start="10"><li>建立世界名稱(若要轉移舊資料，世界名稱須和舊世界相同)</li></ol><ol type="1" id="7e078215-7d4d-414d-affb-a3a530f491d5" class="numbered-list" start="11"><li>建立伺服器密碼：至少5個字，包含一個數字，一個大寫和一個小寫字母(連進遊戲時輸入的密碼)</li></ol><ol type="1" id="c5bfd782-75e2-463e-9ea9-7e7b767c1ceb" class="numbered-list" start="12"><li>過程中有需要輸入y/n的都打y</li></ol><ol type="1" id="70421d91-1efa-44f2-b7db-9b5aa85947fa" class="numbered-list" start="13"><li>最後要重啟VM。關閉Command Line視窗，回到VM執行個體 -&gt; 勾選建立的VM -&gt; 點選上方停止按鈕 -&gt; 點選 開始/繼續</li></ol><ol type="1" id="aea5fe2f-36dc-4eaa-8084-9a79f0d11b45" class="numbered-list" start="14"><li>完成後便可開啟遊戲測試連線,在vm執行個體會看到外部IP，這是在遊戲中輸入<strong>Join IP</strong>時所用到的IP位置，密碼則是步驟11設定的伺服器密碼</li></ol><ol type="1" id="2c9bed52-e73c-4692-b8ea-63aa0fa377c9" class="numbered-list" start="15"><li>成功後便可開始遊戲，如果之前玩到一半要遷移舊資料到VM的看搬移地圖檔案</li></ol><h3 id="2045a8c9-7470-4787-8528-3cfaa8a828a8" class="">伺服器更新</h3><p id="8c811573-2f4d-4432-b2ce-fd8f4ed58105" class="">當官方有任何更新時必須手動重啟伺服器，更新內容才會同步到遊戲中，停止後須等待約1分鐘再啟動</p><ol type="1" id="c46b5799-ef01-4546-93b0-57ebb2a3ec3c" class="numbered-list" start="1"><li>停止伺服器：<code>sudo systemctl stop valheimserver.service</code></li></ol><ol type="1" id="7ea6b410-8382-4b2d-9891-77426860573f" class="numbered-list" start="2"><li>啟動伺服器：<code>sudo systemctl start valheimserver.service</code></li></ol><p id="7cf7fe2c-a046-43e9-8b01-c25d31596ff9" class="">或是到上面步驟6的選單中輸入代號重啟14</p><blockquote id="b2177f4e-59e9-4e22-9ef0-57f3f8c04ee0" class="">若重啟後有任何問題可以停止伺服器 -&gt; 重啟VM -&gt; 啟動伺服器</blockquote><h1 id="a5170346-8c60-4c46-b92e-b57b2d5f86b4" class="">搬移地圖檔案</h1><ul id="d7fd5e8d-be3c-40a4-9bc6-5915ea3cbedb" class="bulleted-list"><li style="list-style-type:disc">要搬移Valheim地圖資料須將<code>worlds/</code>資料夾下所有檔案搬移過去,不同主機存放目錄不相同
+Windows<code>C:\\Users\\USERNAME\\AppData\\LocalLow\\IronGate\\Valheim\\worlds\\</code>
+Linux<code>/home/steam/.config/unity3d/IronGate/Valheim/worlds/</code></li></ul><ul id="03374ebc-3cc6-427b-84a0-53ad2db088be" class="bulleted-list"><li style="list-style-type:disc">我們須透過SFTP將資料上傳至VM中</li></ul><h3 id="b1f4d2ae-f095-45c0-92d5-ccd4fe905fb4" class="">取得公私鑰</h3><p id="b64fbf5d-dcec-4c12-a4d8-fe4b405d0445" class="">要連線至VM中最快的方式是使用金鑰的方式</p><ol type="1" id="867efa22-abeb-4371-8515-4c43a5c20a5d" class="numbered-list" start="1"><li>首先下載<a href="https://www.puttygen.com/download.php?val=49">PuTTYgen</a>並執行</li></ol><ol type="1" id="f51e7286-844e-4b02-ad48-8cc9ebd64160" class="numbered-list" start="2"><li>勾選下面幾項後按<strong>Generate</strong><figure id="ae117c1f-b949-4324-8570-fc843f49d420" class="image"><a href="https://xupmtp.github.io/img/gcp6.jpg"><img src="https://xupmtp.github.io/img/gcp6.jpg"/></a></figure></li></ol><ol type="1" id="f6d55f03-5fb8-437a-a3a1-557b8383f27c" class="numbered-list" start="3"><li>修改Key comment為建立VM的mail名稱(例如我的mail是example@gamil.com則輸入example)</li></ol><ol type="1" id="a4b83e8c-054d-4d1d-b99a-6d080e2fae5c" class="numbered-list" start="4"><li>複製圖中紅框部分之後會用到，然後按Save private key(有任何彈窗都按確認)<figure id="a2617e55-ce44-4173-b9b5-85bcd2364dd8" class="image"><a href="https://xupmtp.github.io/img/gcp7.jpg"><img src="https://xupmtp.github.io/img/gcp7.jpg"/></a></figure></li></ol><ol type="1" id="532d1c0f-c594-4776-b663-f8a3b92937ce" class="numbered-list" start="5"><li>回到GCP -&gt; 點選左邊工具列 -&gt; Compute Engine -&gt; 中繼資料 -&gt; 安全殼層金鑰</li></ol><ol type="1" id="5da7197c-2e59-4215-a91e-ebf7fb0a8dc8" class="numbered-list" start="6"><li>點選編輯 -&gt; 新增項目 -&gt; 將複製內容貼到這裡 -&gt; 儲存</li></ol><ol type="1" id="286d9f23-b156-4183-9972-ac9a6feaa211" class="numbered-list" start="7"><li>到這裡便完成公私鑰的設定了</li></ol><h3 id="6f1e1f80-9d27-4f25-bc2d-0f71132e3c1a" class="">上傳地圖檔</h3><ol type="1" id="4219db53-3ee8-4213-9828-4a74033b66ba" class="numbered-list" start="1"><li>首先下載<a href="https://filezilla-project.org/">FileZilla</a></li></ol><ol type="1" id="470faa81-f28b-40b2-a3e8-e6e35ebf9247" class="numbered-list" start="2"><li>開啟後 檔案 -&gt; 站台管理員 -&gt; 新增站台(名稱自訂)</li></ol><ol type="1" id="8e5d44e7-52f1-46fb-bf1f-464669c4e576" class="numbered-list" start="3"><li>按下圖輸入欄位，藍框部分須和圖中相同，紅框填入自己的<ul id="8e10fe6c-3673-4868-bcab-bb313e9f0b31" class="bulleted-list"><li style="list-style-type:disc">主機填入VM的對外IP</li></ul><ul id="181dbca0-5fb5-43d5-a0d7-e2b98758f541" class="bulleted-list"><li style="list-style-type:disc">使用者和Key comment的值相同</li></ul><ul id="fd1739ce-2967-44d8-b0dd-71f96084494f" class="bulleted-list"><li style="list-style-type:disc">金鑰檔案是之前儲存的private key檔案位置<figure id="3c3cc1f0-19b5-43b7-965e-1385badcf7c1" class="image"><a href="https://xupmtp.github.io/img/gcp8.jpg"><img src="https://xupmtp.github.io/img/gcp8.jpg"/></a></figure></li></ul></li></ol><ol type="1" id="ccaa331f-d7af-4a66-8696-b276edc6aa7c" class="numbered-list" start="4"><li>點選連線，若連線成功代表設定正確，若上面有任一步驟錯誤皆可能讓連線失敗</li></ol><ol type="1" id="0b6f622c-2d6c-48b0-a059-603fee678180" class="numbered-list" start="5"><li>將<code>worlds/</code>資料夾下所有檔案先拖移到<code>/home/USERNAME/</code>底下</li></ol><ol type="1" id="e52bf6e0-9e9a-4160-9126-4d63465a3d53" class="numbered-list" start="6"><li>開啟VM command line</li></ol><ol type="1" id="0454fd7a-75d4-41a1-b153-fae6a201358d" class="numbered-list" start="7"><li>停止伺服器：<code>sudo systemctl stop valheimserver.service</code></li></ol><ol type="1" id="8d48548d-3a2b-49dc-8a11-5213d77b0f63" class="numbered-list" start="8"><li>cd到USERNMAE目錄(EX:<code>cd /home/example</code>)</li></ol><ol type="1" id="f57a867c-c6d6-4ec2-a83b-495ef31f311b" class="numbered-list" start="9"><li>搬移所有檔案到worlds目錄 : <code>sudo mv * /home/steam/.config/unity3d/IronGate/Valheim/worlds/</code></li></ol><ol type="1" id="b36cb89a-3ce2-4ab3-adcb-f4fd1259975b" class="numbered-list" start="10"><li>按伺服器更新步驟重啟伺服器</li></ol><ol type="1" id="b1e2d186-3364-477f-bdd3-82b065807284" class="numbered-list" start="11"><li>開啟遊戲確認地圖是否已更新</li></ol><h1 id="36a91483-a3d9-4c83-b703-a48d548d3a8f" class="">Linux SSH連線到Server</h1><h3 id="1b9aa9e0-948f-4f9b-a7a4-b105dbddb0da" class="">建立公私鑰</h3><p id="7d533be9-99eb-4be8-9141-899c03fe7e87" class=""><code>ssh-keygen -t rsa -f ~/.ssh/id_rsa -C forvalheim555@gmail.com -b 2048</code></p><ul id="2260a773-f4af-412b-9cae-d4e0faed47c3" class="bulleted-list"><li style="list-style-type:disc"><code>t rsa</code> 指定rsa作為加密演算法</li></ul><ul id="23b26694-9768-451c-b3de-44e6ee0c65a8" class="bulleted-list"><li style="list-style-type:disc"><code>f ~/.ssh/id_rsa</code>指定產生的私鑰檔案路徑和名稱, 會產生id_rsa(私鑰)及id_rsa.pub(公鑰)2個檔案, 預設放在<code>~/.ssh/id_rsa</code></li></ul><ul id="80a17fe4-6978-4a3a-8482-2b7e9c1d7dd9" class="bulleted-list"><li style="list-style-type:disc"><code>-C forvalheim555@gmail.com</code>加入註釋, 這裡為了GCP需要使用者名稱而加入</li></ul><ul id="8050a860-24d7-4dca-b04a-adbdcb81a460" class="bulleted-list"><li style="list-style-type:disc"><code>b 2048</code>指定金鑰大小</li></ul><h3 id="0eb4c9fd-5cd9-42ab-a5bb-6f2d58845c0e" class="">公鑰放到GCP上</h3><ol type="a" id="ac0170c8-383f-4654-8bf0-c7e5191cdf59" class="numbered-list" start="1"><li>複製id_rsa.pub(公鑰)內容</li></ol><ol type="a" id="bf162729-dc36-4342-96ff-5a89998e7075" class="numbered-list" start="2"><li>開啟GCP console → 搜尋SSH Keys → 選擇安全殼層金鑰 → 新增項目</li></ol><ol type="a" id="5713a727-b1c7-4866-9da1-0dd8483245b9" class="numbered-list" start="3"><li>將複製內容貼上到輸入框, 檢查開頭是ssh-rsa, 結尾是建立時<code>-C</code>參數的值, 最後按3. 儲存完成<figure id="d2f76ff2-913a-4ef6-aac8-c0f0616fca7c" class="image"><a href="%E4%BD%BF%E7%94%A8GCP%E5%BB%BA%E7%AB%8BValheim%20Server%208364f3b7e0c94cf38c4d91f401e0c790/Untitled.png"><img style="width:240px" src="%E4%BD%BF%E7%94%A8GCP%E5%BB%BA%E7%AB%8BValheim%20Server%208364f3b7e0c94cf38c4d91f401e0c790/Untitled.png"/></a></figure></li></ol><h3 id="371e6851-6145-4222-b54a-1d2fce4068b2" class="">ssh連線到server</h3><p id="6925c059-d15b-4025-a046-15ab8899cb8c" class=""><code>ssh </code><code><a href="mailto:forvalheim555@34.80.191.100">forvalheim555@34.80.191.100</a></code></p><ul id="27fbeb27-c6ed-4d8e-9072-cc4fb9dedc9f" class="bulleted-list"><li style="list-style-type:disc">如果是GCP設置的公私鑰, username後面記得省略@gmail.com(產生金鑰時不可省略)</li></ul><ul id="be8e321a-2304-4c88-9375-5712c6e2ab3f" class="bulleted-list"><li style="list-style-type:disc">預設私鑰放在<code>~/.ssh/id_rsa</code>, 如果建立時有用<code>-f</code>自訂名稱, 可以用<code>-i /path</code>指定私鑰位置</li></ul><ul id="74cc7551-4bc6-4646-a97b-3a8aaf42ad14" class="bulleted-list"><li style="list-style-type:disc">通過加入/編輯 <code>~/.ssh/config</code>文件(如下配置), 執行<code>ssh remote_server_name</code>時, ssh會自動找到配置的私鑰路徑,遠端主機IP等資訊<pre id="d51ee9bf-d901-448d-9125-b4a622f521fa" class="code"><code>Host remote_server_name
+    Hostname 34.80.191.100
+    User forvalheim555
+    IdentityFile /path/to/your/private/key</code></pre></li></ul><h3 id="00fc7f22-65ae-47c1-ad35-5015b4a01bc2" class="">複製server檔案</h3><pre id="b0109441-25f0-4fc8-9567-4f1bfc154d6a" class="code"><code>scp forvalheim555@34.80.191.100:/home/steam/.config/unity3d/IronGate/Valheim/worlds/game1.* /home/simon/test/</code></pre><ul id="83e7f5d1-53d8-4bdc-a6b8-5190e6452f1c" class="bulleted-list"><li style="list-style-type:disc">和連線一樣, 若建立金鑰有指定私鑰位置, 執行時鑰使用<code>-i /path</code>指定私鑰路徑</li></ul><ul id="7a286903-872b-4ba2-b82a-c3edd7d414e0" class="bulleted-list"><li style="list-style-type:disc">server路徑在前表示複製server的檔案到locale, 若要複製locale檔案到server, 則改成locale路徑在前</li></ul><h1 id="4ec77862-5154-4cd5-84dd-bfc9f856c171" class="">參考</h1><ul id="28ecef0b-e3d2-41b9-8326-a34eec48b1d1" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.youtube.com/watch?v=2WjFBp1Opr4">如何架設瓦爾海姆GCP獨立伺服器</a></li></ul><ul id="4dfd69f3-8b4f-42b3-9e9b-04156b182b79" class="bulleted-list"><li style="list-style-type:disc"><a href="https://github.com/Nimdy/Dedicated_Valheim_Server_Script">GitHub - Nimdy/Dedicated_Valheim_Server_Script</a></li></ul><ul id="1441a869-b8d6-44cd-bb11-81f0dd0a8caa" class="bulleted-list"><li style="list-style-type:disc"><a href="https://medium.com/@milly16chien/gcp-upload-file-via-sftp-d57e28c3db57">[GCP] Upload file via SFTP</a></li></ul><ul id="192ac1a6-0655-4404-a0d8-2ba6bf404d79" class="bulleted-list"><li style="list-style-type:disc"><a href="https://cloud.google.com/compute/docs/connect/create-ssh-keys?hl=zh-cn">GCP 管理SSH密鑰</a></li></ul><ul id="05d530d5-73eb-4889-b516-3be454d1d06c" class="bulleted-list"><li style="list-style-type:disc"><a href="https://unix.stackexchange.com/questions/188285/how-to-copy-a-file-from-a-remote-server-to-a-local-machine">複製ssh server檔案到locale</a></li></ul><p id="10dd4990-9226-44bb-96af-484c2404447b" class="">
+</p></div></article></body></html>
