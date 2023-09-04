@@ -1,3 +1,26 @@
+$(function () {
+  //建立table
+  const table = $("table")
+  for (let i = 1; i <= 9; i++) {
+    const tr = $('<tr>')
+    if (i % 3 === 0 && i !== 9) tr.css('border-bottom', '2.5px solid black')
+
+    for (let j = 1; j <= 9; j++) {
+      const td = $(`<td id="${i - 1}${j - 1}">`)
+      td.prop('contentEditable', true)
+      if (j % 3 === 0 && j !== 9) td.css('border-right', '2.5px solid black')
+      tr.append(td)
+    }
+
+    table.append(tr)
+  }
+
+  // 檢查輸入值
+  $("td").blur(function () {
+    if (!/^[0-9]$/.test($(this).html())) $(this).html("");
+  })
+})
+
 function main() {
   // 初始化陣列
   const S = range(9).map((_, i) => range(9).map((_, j) => Number($("#" + i + j).html())))
@@ -24,11 +47,11 @@ function sudoku(S, i, j) {
     i++;
     j = 0;
   }
-  //
-  // if (S[i][j] !== 0) {
-  //   sudoku(S, i, j + 1);
-  //   return
-  // }
+
+  if (S[i][j] !== 0) {
+    sudoku(S, i, j + 1);
+    return
+  }
 
   // 每次只對未更改過的格子做判斷,避免改到題目格子
   if (S[i][j] === 0) {
@@ -41,7 +64,7 @@ function sudoku(S, i, j) {
         S[i][j] = 0;
       }
     }
-  } else sudoku(S, i, j + 1);
+  }
 }
 
 /**
